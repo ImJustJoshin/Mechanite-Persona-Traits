@@ -1,0 +1,14 @@
+<Manifest>
+    <identifier>ImJustJoshin.MechanitePersonaTraits</identifier>
+    <!--  Soapbox Speech:
+        Using date of release as version number communicates more useful information 
+        than the v1.1.001 style version numbering, and dispenses with the waste of time that is
+        assessing the largely subjective importance of an update.
+        For multiple releases during the same day, append another digit: 3.27.2021.1
+      -->
+    <version>12.31.2022</version>
+
+    <!-- These links wire up the new version available alert in Mod Manager -->
+    <manifestUri>https://raw.githubusercontent.com/ImJustJoshin/Mechanite-Persona-Traits/master/About/manifest.xml</manifestUri>
+    <downloadUri>https://github.com/ImJustJoshin/Mechanite-Persona-Traits/releases/latest</downloadUri>
+</Manifest>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A WeaponTraitDef using the mods, Mechanite Plague & More Persona Traits.
+At the moment, I hope it does the following:
+- Adds THREE new Persona Traits using the Mechanite Plague mod. Both positive and negative traits.
+
+New Additions:
+Mechanite Infector: On hit, roll a 75% chance to infect the target with the mechanite plague AND upon the target's death, spawn FRIENDLY bursters.
+Mechanite Injector: Upon hitting a target, there is a small chance that the user will contract the mechanite plague AND upon the user's untimely death, spawn "FRIENDLY" bursters.
+Mechanite Infester: A dastardly trait that guarantees infection on every hit plus delievers more bursters than your average Mechanite Plague weapon. However, it comes with a multitude of downsides
+that the player will have to overcome! The full list is as follows:
+
++ 100% chance to infect targets with the Mechanite Plague AND spawn an additional burster on death (So a burster spawn rolling 1 burster would instead spawn 2)
++ Apply additional damage to targets known as "Mechanite Infestation". Both functional and serves as fill in-game head canon as the infestor really shows as damage.
++ Positive mood buff when you keep your persona core happy by infecting as many people as possible with the Mechanite Plague.
++ Complete immunite to the Mechanite Plague considering the pawn's body now stores the plague similar to Bursters.
++ Plaguelust fallPerDay is dynamically changed depending on how high/low Mechanite Capacity is.
+(This is to prevent extreme micromanagement so a pawn that just went out fighting and got hospitalized doesn't have to worry...
+about immediately getting fixed up to go fighting again, they can just wait and heal... BUT NOT FOREVER.)
++ Provides capability bonuses to the bondmate which grows stronger if they failed to spread the plague (Overload).
++/- These bonuses will turn against you as pawns who fail to spread the plague to get these bonuses will turn Manhunter within a few seconds of reaching this critical stage.
+However, in the hands of a good player this MIGHT be a good thing.
+- The persona core isn't asking you to spread the plague, its a demand that must be balanced with other needs. This power should mainly be used on pawns that go out fighting decently often.
+- Considering the fact that the bonded persona core is using it's bondmates body for resources to fabicrate the Mechanite Plague within them, this pawn will burn through food reserves.
+- If this pawn is female, they sacrifice their future in order to wield this persona core. (Pregnancy will always fail)
+- Positive mood buff flips to harsh negative debuff if pawn fails to spread the plague regulary. (Worse than Mind-Shattering Pain)
+- Plaguelust fallPerDay is dynamically changed depending on how high/low Mechanite Capacity is.
+(Let Mechanite Capacity get too high and Plaguelust will fall dramatically forcing the player to fight humanlike targets on their own terms or let Manhunter do it for them.
+
+Note: Mechanite Infester is Experimental right now as I would like to spend a lot more time tweaking it's values and perhaps optimizing it.
+So please, if you see values that are a little strange then shoot me a balance pitch and I'll see if it makes sense to change it.
+-->
+
+<Defs>
+	<!-- New Positive Persona Trait: Mechanite Infector -->
+	<WeaponTraitDef>
+        <defName>MPT_OnHit_Mechanite</defName>
+        <label>mechanite infector</label>
+        <description>This weapon's persona has adopted the art of incubated destruction. Upon hitting a target, this weapon has a chance to apply/increase the mechanite plague.\n\n75% Chance to apply the Mechanite Plague at 0.09 severity.</description>
+        <commonality>0.5</commonality>
+        <marketValueOffset>600</marketValueOffset>
+		<exclusionTags>
+			<li>MPT_OnHit_DrainBlood</li>
+            <li>MPT_Bonded_ImmuneMechanite</li>
+        </exclusionTags>
+        <descriptionHyperlinks>
+			<HediffDef>MP_MechanitePlague</HediffDef>
+        </descriptionHyperlinks>
+        <modExtensions>
+            <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
+                <OnHitWorkers>
+                    <li Class="MorePersonaTraits.WorkerClasses.OnHitWorkerClasses.OnHitWorker_ApplyHediff">
+                        <HediffDef>MPT_MechaniteUnion</HediffDef>
+                        <ProcMagnitude>1.00</ProcMagnitude>
+                        <ProcChance>0.75</ProcChance>
+                        <RequiresBothLiving>true</RequiresBothLiving>
+                        <RequiresBio>true</RequiresBio>
+                    </li>
+                </OnHitWorkers>
+            </li>
+        </modExtensions>
+    </WeaponTraitDef>
+	
+	<!-- New Negative Persona Trait: Mechanite Injector -->
+	<WeaponTraitDef>
+        <defName>MPT_OnHit_MechaniteSelf</defName>
+        <label>mechanite injector</label>
+        <description>This weapon's persona, in awe of the mechanoid hives creativity, decided to spread their "gift" to their bondmate. Upon hitting a target, there is a small chance that the user will contract the mechanite plague.\n\nNote: Dying from the mechanite plague as a result of the persona's love for the hives will result in HOSTILE bursters being spawned.</description>
+        <commonality>0.5</commonality>
+        <marketValueOffset>-1000</marketValueOffset>
+        <exclusionTags>
+            <li>MPT_Bonded_ImmuneMechanite</li>
+        </exclusionTags>
+        <descriptionHyperlinks>
+            <HediffDef>MP_MechanitePlague</HediffDef>
+        </descriptionHyperlinks>
+        <modExtensions>
+            <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
+                <OnHitWorkers>
+                    <li Class="MorePersonaTraits.WorkerClasses.OnHitWorkerClasses.OnHitWorker_ApplyHediff">
+                        <HediffDef>MP_MechanitePlague</HediffDef>
+                        <ProcMagnitude>0.20</ProcMagnitude>
+                        <ProcChance>0.05</ProcChance>
+                        <TargetSelf>true</TargetSelf>
+                        <RequiresBio>true</RequiresBio>
+                    </li>
+                </OnHitWorkers>
+            </li>
+        </modExtensions>
+    </WeaponTraitDef>
+	
+	<!-- New Positive...? Persona Trait: Mechanite Infester (Check MechaniteNeeds.xml for more) -->
+	<WeaponTraitDef>
+        <defName>MPT_Unique_MechaniteInfester</defName>
+        <label>mechanite infester</label>
+        <description>This weapon's persona has most of its mind corrupted by the Mechanite Plague... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona away into the deepest hole you can find...\n\nThe moment this Persona core bonds with another, their minds will be shattered by the Mechanite Plague and forced into spreading it whenever and wherever they can. Failure to do so will result in a plague-fueled rampage.</description>
+        <commonality>0.3</commonality>
+        <marketValueOffset>-1000</marketValueOffset>
+		<bondedHediffs>
+            <li>MPT_Bonded_MechanitePlagueLich</li>
+			<li>MPT_MechaniteCapacity</li>
+        </bondedHediffs>
+		<bondedThought>MPT_Thought_Plaguelust</bondedThought>
+		<equippedStatOffsets>
+			<BedHungerRateFactor>0.50</BedHungerRateFactor>
+			<EatingSpeed>0.50</EatingSpeed>
+        </equippedStatOffsets>
+		<exclusionTags>
+			<li>NeverBond</li>
+			<li>MPT_OnKill_NeedFilledChemical</li>
+			<li>MPT_Bonded_Addiction</li>
+            <li>MPT_Bonded_ImmuneMechanite</li>
+        </exclusionTags>
+        <descriptionHyperlinks>
+			<HediffDef>MP_MechanitePlague</HediffDef>
+        </descriptionHyperlinks>
+        <modExtensions>
+            <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
+                <OnHitWorkers>
+                    <li Class="MorePersonaTraits.WorkerClasses.OnHitWorkerClasses.OnHitWorker_ApplyHediff">
+                        <HediffDef>MPT_MechaniteInfester</HediffDef>
+                        <ProcMagnitude>1.00</ProcMagnitude>
+                        <ProcChance>1.00</ProcChance>
+                        <RequiresBothLiving>true</RequiresBothLiving>
+                        <RequiresBio>true</RequiresBio>
+                    </li>
+                </OnHitWorkers>
+            </li>
+        </modExtensions>
+    </WeaponTraitDef>
+</Defs>

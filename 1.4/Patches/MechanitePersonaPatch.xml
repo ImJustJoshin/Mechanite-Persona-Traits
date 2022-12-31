@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+A simple patching operation for the mods, Mechanite Plague & More Persona Traits.
+At the moment, I hope it does the following:
+- Adds Mechanite Plague Immunity to existing WeaponTraitDef and relevant description/tooltip changes to show new immunity into the game.
+
+Added Insertions:
+MPT_Hediff_ImmuneMechanite: Added a ModExtension to allow MPT_Hediff_ImmuneMechanite the ability to prevent new instances of the Mechanite Plague from infecting the wielder.
+A ModExtension is used because of how the Mechanite Plague is applied to pawns. A makeImmuneTo entry is added simply for the tooltips so players know that their pawns are safe.
+
+Replacement Edits:
+MPT_Bonded_ImmuneMechanite: The relevant parts of the description have been simplified down to "prevent mechanite intrusion". Feel free to change this if you want or anything for that matter.
+MPT_Hediff_ImmuneMechanite: Same deal as above. This is done just to cover the all bases concerning "mechanite intrusion".
+
+Note: Clean up! Now everything is in it's proper place instead of everything using PatchOperations. Got cluttered pretty fast.
+-->
+
+<Patch>
+    <!-- Check for: Mechanite Plague & More Persona Traits-->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Mechanite Plague</li>
+			<li>More Persona Traits</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <success>Normal</success>
+            <operations>
+                <!-- Insert New Immunity: Mechanite Plague  -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/HediffDef[defName="MPT_Hediff_ImmuneMechanite"]</xpath>
+                    <value>
+                        <modExtensions>
+                            <li Class="MP_MechanitePlague.ModExtension_MechPlagueImmunity"/>
+                        </modExtensions>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/HediffDef[defName="MPT_Hediff_ImmuneMechanite"]/stages/li/makeImmuneTo</xpath>
+                    <value>
+                        <li>MP_MechanitePlague</li>
+                    </value>
+                </li>
+                <!-- Edit Pre-existing Description: MPT_Bonded_ImmuneMechanite -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/WeaponTraitDef[defName="MPT_Bonded_ImmuneMechanite"]/description</xpath>
+                    <value>
+                        <description>This weapon's persona once got into a heated debate with a mechanite swarm and has never trusted them since. It will do its best to protect its host from any non-consensual mechanites.\nThe bonded pawn is made immune to mechanite intrusion so long as the bond remains.\n\nNote: The forced incubation of the mechanite bursters cannot be prevented by the weapon persona as there is only so much they can do... Try NOT getting forcibly implanted with bursters.</description>
+                    </value>
+                </li>
+                <!-- Edit Pre-existing Description: MPT_Hediff_ImmuneMechanite -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/HediffDef[defName="MPT_Hediff_ImmuneMechanite"]/description</xpath>
+                    <value>
+                        <description>My bonded weapon is providing me with immunity from unwanted mechanites.</description>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+</Patch>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A NeedsDef using the mod, Mechanite Plague.
+At the moment, I hope it does the following:
+- Add a new addiction to the game acquired only through a persona bond called Plaguelust.
+
+New Additions:
+MPT_Bonded_MechanitePlagueLich: The gift of the corrupted persona core! Powerful boosts but if the pawn fails to infect... they'll have a Manhunter mental break
+so your pawn will ONLY attack humanoids or mechanoids instead of the Berserk mental break that luciferium gives which attacks is whatever happens to be closest to them.
+MPT_Need_MechanitePlagueLich: The actual addiction part of the bond.
+
+EXPERIMENTAL: There's still a lot I want to do with this and a lot I want to test. However, I am not a guy who knows BALANCE so if you think there's
+something I can change here that will provide a decently powerful buff balanced by a heavy downside I am ALL for it. This was kinda of thrown
+together the moment it got into my head, "Hey I should make a THIRD trait thats CRAZY using multiple workers and Ideas from the More Persona Traits!"
+-->
+
+<Defs>
+	<!-- The Mechanite Plague Lich Addiction -->
+	<NeedDef ParentName="DrugAddictionNeedBase">
+		<defName>MPT_Need_MechanitePlagueLich</defName>
+		<needClass>Need_Chemical</needClass>
+		<label>Plaguelust</label>
+		<description>This person yearns to infect others with the Mechanite Plague that's rampant within themselves.\n\nIf they are not regularly spreading the Mechanite Plague, the screaming voices of their bonded persona weapon will overload their bondmate's mind with mechanites to incite an uncontrollable rage.\n\nOverloading will provide even greater bonuses, tuned for combat, to ensure they infect someone during their rampage.</description>
+		<listPriority>45</listPriority>
+		<baseLevel>0.50</baseLevel>
+		<fallPerDay>0</fallPerDay> <!-- Dynamically changed based on MPT_MechaniteCapacity severity -->
+		<showForCaravanMembers>true</showForCaravanMembers>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+	</NeedDef>
+	
+	<!-- Add scary bond addiction with BIG benefits and BIG downsides... -->
+	<HediffDef>
+		<defName>MPT_Bonded_MechanitePlagueLich</defName>
+		<hediffClass>Hediff_Addiction</hediffClass>
+		<label>Mechanite Plague Lich</label>
+		<description>The bonded weapon persona has infested their bondmate's body with the Mechanite Plague. However, the plague is not harvesting the bodies resources to create bursters...
+
+Turns out the corrupted persona core is using their bondmate's body as a cauldron to create a modified version of the Mechanite Plague. This has the added benefits of making their bondmate immune to the Mechanite Plague along with giving the bondmate enhanced capabilities while their weapon persona utilizes more efficient mechanites for the Mechanite Plague.</description>
+		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<causesNeed>MPT_Need_MechanitePlagueLich</causesNeed>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>MP_MechanitePlague</li>
+				</makeImmuneTo>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.05</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.05</offset>
+					</li>
+					<li>
+						<capacity>Sight</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>BloodPumping</capacity>
+						<offset>0.15</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.15</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>Overload</label>
+				<painFactor>0.4</painFactor>
+				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+				<lifeThreatening>true</lifeThreatening>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.15</offset>
+					</li>
+					<li>
+						<capacity>Sight</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>BloodPumping</capacity>
+						<offset>0.30</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>0.05</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.15</offset>
+					</li>
+				</capMods>
+				<mentalStateGivers>
+					<li>
+						<mentalState>Manhunter</mentalState>
+						<mtbDays>0.05</mtbDays>
+					</li>
+				</mentalStateGivers>
+			</li>
+		</stages>
+		<modExtensions>
+			<li Class="MP_MechanitePlague.ModExtension_MechPlagueImmunity"/>
+		</modExtensions>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>MPT_MechaniteCapacity</defName>
+		<hediffClass>MPT_MechaniteHelper.Hediff_MechaniteCapacity</hediffClass>
+		<label>Mechanite Capacity</label>
+		<description>As the corrupted persona core uses their bondmate's body to create more mechanites and flood's their mind with unyielding desire to infect others, it has become apparent that the persona core has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites. However, this only bides time for the bondmate's sanity as without mechanite's flooding their mind they can finally think clearly... for a time.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess to drive the bondmate insane far faster than normal.</description>
+		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<minSeverity>0.001</minSeverity>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<initialSeverity>0.25</initialSeverity>
+		<preventsPregnancy>true</preventsPregnancy>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>0.355</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<minSeverity>0.03</minSeverity>
+				<label>Depleted</label>
+			</li>
+			<li>
+				<minSeverity>0.10</minSeverity>
+				<label>Diminished</label>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>Normal</label>
+			</li>
+			<li>
+				<minSeverity>0.50</minSeverity>
+				<label>Swelling</label>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>Overflowing</label>
+				<vomitMtbDays>2</vomitMtbDays>
+			</li>
+			<li>
+				<minSeverity>0.90</minSeverity>
+				<label>Bursting</label>
+				<vomitMtbDays>0.4</vomitMtbDays>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A DamageDef.
+At the moment, I hope it does the following:
+- Add a damage type named Mechanite Infestation.
+
+New Additions:
+MPT_Damage_MechaniteInfestation: I just wanted the damage caused by MPT_MechaniteInfester to be unique. Its probably too much.
+
+-->
+
+<Defs>
+	<DamageDef ParentName="CutBase">
+		<defName>MPT_Damage_MechaniteInfestation</defName>
+		<label>Mechanite Infestation</label>
+		<deathMessage>{0} has been shredded.</deathMessage>
+		<hediff>MPT_Hediff_MechaniteInfestation</hediff>
+		<hediffSkin>MPT_Hediff_MechaniteInfestation</hediffSkin>
+	</DamageDef>
+</Defs>

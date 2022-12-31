@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A ThoughtDef.
+At the moment, I hope it does the following:
+- Add a bonded thought that reduce mood gradually as Plaguelust decreases.
+
+New Additions:
+MPT_Thought_Plaguelust: This and the mood debuff is to show that the persona core really IS driving you insane.
+
+-->
+
+<Defs>   
+	<ThoughtDef>
+        <defName>MPT_Thought_Plaguelust</defName>
+        <workerClass>MPT_MechaniteHelper.ThoughtWorker_NeedPlagueLust</workerClass>
+		<validWhileDespawned>true</validWhileDespawned>
+        <stages>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON}, my bonded weapon, is overjoyed! The plague is spread and I am loving this rush!</description>
+                <baseMoodEffect>20</baseMoodEffect>
+            </li>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON}, my bonded weapon, is in bright mood. Our recent infections has left lasting effects on us both.</description>
+                <baseMoodEffect>12</baseMoodEffect>
+            </li>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON}, my bonded weapon, remains quiet and my mind is at peace... for now...</description>
+                <baseMoodEffect>4</baseMoodEffect>
+            </li>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON}, my bonded weapon, is berating me for not spreading the Mechanite Plague...</description>
+                <baseMoodEffect>-8</baseMoodEffect>
+            </li>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON}, my bonded weapon, screeches in my ear! It's voice is deafening but the message is clear: INFECT</description>
+                <baseMoodEffect>-24</baseMoodEffect>
+            </li>
+			<li>
+                <label>{WEAPON}'s plaguelust</label>
+                <description>{WEAPON} IS FLOODING MY MIND! MECHANITES INVADING EVERY INCH OF MY BODY! THIS IS UNBEARABLE!</description>
+                <baseMoodEffect>-36</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+</Defs>

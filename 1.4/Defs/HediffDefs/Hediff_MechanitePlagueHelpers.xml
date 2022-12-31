@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+A HediffDef using the mod, Mechanite Plague.
+At the moment, I hope it does the following:
+- Adds a two hidden helper Hediffs to properly apply the Mechanite Plague to a truly unlucky pawn.
+
+Unique Additions:
+MPT_MechaniteUnion: A hidden hediff. This is connected to C# script to ensure that once the target biological pawn gets this Hediff, a new instance of "Mechanite Plague" is added to them.
+If the Mechanite Plague already exists in them then it simply compounds the severity. This is done to ensure the plague is forcibly set to the PLAYER faction not the MECHANOID faction.
+Once the new instance of "Mechanite Plague" is applied, this Hediff will remove itself quietly.
+
+MPT_MechaniteInfester: Ditto but way worse.
+
+Note: I did this because the Mechanite Plague is uniquely applied in-game through Irecreeper's code. If applied in anyway outside of Irecreeper's code then
+the Mechanite Plague defaults to the Mechanoid Hive faction which is bad for the positive trait, Mechanite Infector. However, I found this to be useful
+for the negative trait, Mechanite Injector, which through a little head canon, the player can make up their own reason as to why enemy bursters spawn out of their dead
+colonist after using their persona weapon with this trait. Perhaps the persona weapon aligns with the Mechanoid Hive or maybe your persona weapon hates you.
+
+Regardless, should the target pawn recieve any futher instance of "Mechanite Plague" that has an instigator assigned to it, the forced player instance can be overriden.
+-->
+
+<Defs>
+	<!-- Add Mechanite Plague + More Persona Traits Hediff helper (For Mechanite Infector) -->
+	<HediffDef>
+		<defName>MPT_MechaniteUnion</defName>
+		<hediffClass>MPT_MechaniteHelper.Hediff_MechaniteUnion</hediffClass> <!-- Script to apply PLAYER faction to new instance of Mechanite Plague -->
+		<label>Mechanite Plague</label>
+		<description>Mechanite Plague (Helper #1)\nYou shouldn't be able to see this! Unless your debugging your mods or perhaps wish to see behind the scenes in Rimworld modding...\n\nWAIT YOU MIGHT BE CHEATING! HOW DARE YOU CHEAT IN YOUR OWN PRIVATE GAME!\n\nNah just kidding go wild! This is only here to serve as a helper to apply the Mechanite Plague to a pawn correctly. Go ahead add it to a biological pawn see what happens!</description>
+		<defaultLabelColor>(0.7,1.0,0.7)</defaultLabelColor>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<isBad>True</isBad>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- Add Mechanite Plague + More Persona Traits Hediff helper (For Mechanite Infester) -->
+	<HediffDef>
+		<defName>MPT_MechaniteInfester</defName>
+		<hediffClass>MPT_MechaniteHelper.Hediff_MechaniteInfester</hediffClass> <!-- Script to apply PLAYER faction to new instance of Mechanite Plague -->
+		<label>Mechanite Plague</label>
+		<description>Mechanite Infester (Helper #2)\nYou shouldn't be able to see this! Unless your debugging your mods or perhaps wish to see behind the scenes in Rimworld modding...\n\nWAIT YOU MIGHT BE CHEATING! HOW DARE YOU CHEAT IN YOUR OWN PRIVATE GAME!\n\nNah just kidding go wild! This is only here to serve as a helper to apply the Mechanite Plague to a pawn correctly. DO NOT add this to a pawn outside my method please!</description>
+		<defaultLabelColor>(0.7,1.0,0.7)</defaultLabelColor>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<isBad>True</isBad>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

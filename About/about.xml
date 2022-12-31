@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+    <name>Mechanite Persona Traits</name>
+    <author>ImJustJoshin</author>
+    <packageId>ImJustJoshin.MechanitePersonaTraits</packageId>
+    <description>A wholesome union of a weaponized plague and your favorite Persona weapon! Wait... what?
+\nThis mod patch introduces the Mechanite Plague to all your favorite Persona weapons! Modded Persona weapons included! Make use of THREE brand new persona weapon traits to infect targets with the plague, then kill them to unleash mechanoid Bursters upon your enemies! However, be warned! The Mechanite Plague is a sword that can be wielded by all!
+	</description>
+	<url>https://steamcommunity.com/sharedfiles/filedetails/?id=2901218188</url>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <displayName>Mechanite Plague</displayName>
+            <packageId>Chairheir.MechanitePlague</packageId>
+            <steamWorkshopUrl>steam://https://steamcommunity.com/sharedfiles/filedetails/?id=2503246357</steamWorkshopUrl>
+        </li>
+        <li>
+            <displayName>More Persona Traits</displayName>
+            <packageId>Arquebus.MorePersonaTraits</packageId>
+            <steamWorkshopUrl>steam://https://steamcommunity.com/sharedfiles/filedetails/?id=2863308112</steamWorkshopUrl>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>Chairheir.MechanitePlague</li>
+        <li>Arquebus.MorePersonaTraits</li>
+    </loadAfter>
+</ModMetaData>
