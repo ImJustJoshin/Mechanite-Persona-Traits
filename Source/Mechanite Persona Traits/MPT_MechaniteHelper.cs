@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using MP_MechanitePlague;
-using System.Linq;
 using Verse;
 
 namespace MPT_MechaniteHelper
@@ -9,6 +8,8 @@ namespace MPT_MechaniteHelper
     class Hediff_MechaniteCapacity : HediffWithComps
     {
         static bool targetPlagued = false;
+        public NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
+
         public static bool IsInfected()
         {
             //Once true, final result will bestow relief to those
@@ -19,22 +20,28 @@ namespace MPT_MechaniteHelper
         {
             //Check if pawn has Mechanite Capacity...
             Hediff mechaniteCapacity = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
-            //Temporary - One pawn with this Hediff defines how fast Plaguelust need falls. Two pawns with this hediff destroys all of reality.
-            //Find the Database entry for my custom NeedDef
-            var plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
+
+            //Gotta be honest. I have no idea how this doesn't conflict if multiple pawns have this hediffClass
+            //on them. I truly believed that changing the GLOBAL setting for Plaguelust's fallPerDay on a per
+            //pawn basis would lead to one pawn setting the fallPerDay too high or too low depending on
+            //their Mechanite Capacity such as one pawn at Bursting making another pawn at Depleted
+            //drop the plaguelust super fast but nope. In-game this doesn't happen at all.
+            //No clue why. My best guess is that on the pawn's tick it then changes to the
+            //correct value for themselves and the next pawn does the same.
+            //Because this... works? Unless I am told otherwise I'm just going to leave it.
             if (mechaniteCapacity != null)
             {
                 if (mechaniteCapacity.Severity >= 0.90f)
                 {
                     //Overflowing rises to Bursting :(
-                    //Plaguelust if its not 0 by now... it will be.
-                    plaguelust.fallPerDay = 3;
+                    //Plaguelust if its not 0 by now... it soon will be.
+                    plaguelust.fallPerDay = 6.5f;
                 }
                 else if (mechaniteCapacity.Severity >= 0.75f && mechaniteCapacity.Severity < 0.90f)
                 {
                     //Swelling rising to Overflowing
                     //Urges begin to spiral out of control as mechanite reserves greatly exceed "normal" capacity.
-                    plaguelust.fallPerDay = 0.95f;
+                    plaguelust.fallPerDay = 2.5f;
                 }
                 else if (mechaniteCapacity.Severity >= 0.50f && mechaniteCapacity.Severity < 0.75f)
                 {
@@ -56,8 +63,9 @@ namespace MPT_MechaniteHelper
                 }
             }
         }
+
         //This little guy gives the MPT_MechaniteCapacity hediff a neat little bar
-        //To show how high/low it is :)
+        //To visually show how high/low it is! :)
         public override string SeverityLabel
         {
             get
@@ -69,31 +77,36 @@ namespace MPT_MechaniteHelper
                 return this.Severity.ToStringPercent("F0");
             }
         }
+
         //Final result in-game
         public override void Tick()
         {
             base.Tick();
             //Check if pawn is a Mechanite Plague Lich...
+            //Then check if pawn has Mechanite Capacity...
             Hediff plagueLich = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_Bonded_MechanitePlagueLich"));
-            //Check if pawn has Mechanite Capacity - Ticks once until new infection is found
             Hediff mechaniteCapacity = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
+
+            //If they do and Hediff_MechaniteCapacity.IsInfected() was called do this...
             if (plagueLich != null && targetPlagued)
             {
-                //If Mechanite Lich then purge some Mechanites
+                //PURGE THEM MECHANITES
                 mechaniteCapacity.Severity -= 0.018f;
-                var plaguelust = pawn.needs.AllNeeds.Where(need => need is Need_Chemical).RandomElementWithFallback();
-                var plaguelustRecovery = 0.045f;
+                var plaguelustLevel = pawn.needs.TryGetNeed(plaguelust);
+                //To Do: Expose this variable for player modification (Configs)
+                var plaguelustRecovery = 0.095f;
                 if (plaguelust == null) return;
                 //THEN save the damned soul from infecting others... at least for a time.
-                plaguelust.CurLevel += plaguelust.MaxLevel * plaguelustRecovery;
+                plaguelustLevel.CurLevel += plaguelustLevel.MaxLevel * plaguelustRecovery;
+                //End loop so code doesn't go BRR
+                targetPlagued = false;
             }
-            //Call PlagueLust then return bool to false so code doesn't loop
+            //Call PlagueLustTick - Gotta update that plaguelust fallPerDay for the pawn.
             PlagueLustTick();
-            targetPlagued = false;
         }
     }
 
-    //Basic Mechanite Plague Trait: Allows any persona weapon to inflict the mechanite plague.
+    //Basic Mechanite Plague Trait: Allows any persona weapon to inflict the mechanite plague. Simple.
     class Hediff_MechaniteUnion : HediffWithComps
     {
         public override void Tick()
@@ -112,7 +125,6 @@ namespace MPT_MechaniteHelper
     }
 
     //Advanced Mechanite Plague Trait: Damages AND infects the target pawn with the mechanite plague...
-    //However that pawn might have gotten off lucky...
     class Hediff_MechaniteInfester : HediffWithComps
     {
         public override void Tick()

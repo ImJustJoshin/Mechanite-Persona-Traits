@@ -25,7 +25,6 @@ together the moment it got into my head, "Hey I should make a THIRD trait thats 
 		<listPriority>45</listPriority>
 		<baseLevel>0.50</baseLevel>
 		<fallPerDay>0</fallPerDay> <!-- Dynamically changed based on MPT_MechaniteCapacity severity -->
-		<showForCaravanMembers>true</showForCaravanMembers>
 		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
 	</NeedDef>
 	
@@ -78,9 +77,47 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 			</li>
 			<li>
 				<label>Overload</label>
+				<lifeThreatening>true</lifeThreatening>
+				<hediffGivers>
+					<li Class="HediffGiver_Random">
+						<hediff>MPT_Hediff_Overload</hediff>
+						<mtbDays>0.05</mtbDays>
+					</li>
+				</hediffGivers>
+			</li>
+		</stages>
+		<modExtensions>
+			<li Class="MP_MechanitePlague.ModExtension_MechPlagueImmunity"/>
+		</modExtensions>
+	</HediffDef>
+	
+	<!-- Overload Hediff to boost pawn strength for a time once Plaguelust hits zero -->
+	<HediffDef>
+		<defName>MPT_Hediff_Overload</defName>
+		<label>Overload Boost</label>
+		<hediffClass>Hediff_High</hediffClass>
+		<description>This bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
+		<defaultLabelColor>(0.7,0.1,0.1)</defaultLabelColor>
+		<makesAlert>false</makesAlert>
+		<maxSeverity>1.0</maxSeverity>
+		<initialSeverity>1.0</initialSeverity>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-3</severityPerDay>
+				<showDaysToRecover>true</showDaysToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
 				<painFactor>0.4</painFactor>
 				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
-				<lifeThreatening>true</lifeThreatening>
+				<mentalStateGivers>
+					<li>
+						<mentalState>Manhunter</mentalState>
+						<mtbDays>0</mtbDays>
+					</li>
+				</mentalStateGivers>
 				<capMods>
 					<li>
 						<capacity>Consciousness</capacity>
@@ -107,24 +144,15 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 						<offset>0.15</offset>
 					</li>
 				</capMods>
-				<mentalStateGivers>
-					<li>
-						<mentalState>Manhunter</mentalState>
-						<mtbDays>0.05</mtbDays>
-					</li>
-				</mentalStateGivers>
 			</li>
 		</stages>
-		<modExtensions>
-			<li Class="MP_MechanitePlague.ModExtension_MechPlagueImmunity"/>
-		</modExtensions>
 	</HediffDef>
 	
 	<HediffDef>
 		<defName>MPT_MechaniteCapacity</defName>
 		<hediffClass>MPT_MechaniteHelper.Hediff_MechaniteCapacity</hediffClass>
 		<label>Mechanite Capacity</label>
-		<description>As the corrupted persona core uses their bondmate's body to create more mechanites and flood's their mind with unyielding desire to infect others, it has become apparent that the persona core has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites. However, this only bides time for the bondmate's sanity as without mechanite's flooding their mind they can finally think clearly... for a time.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess to drive the bondmate insane far faster than normal.</description>
+		<description>As the corrupted persona core uses their bondmate's body to create more mechanites and flood's their mind with unyielding desire to infect others, it has become apparent that the persona core has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess to drive their bondmate's plaguelust down far faster than normal.</description>
 		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<minSeverity>0.001</minSeverity>
@@ -134,7 +162,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<preventsPregnancy>true</preventsPregnancy>
 		<comps>
 			<li Class="HediffCompProperties_SeverityPerDay">
-				<severityPerDay>0.355</severityPerDay>
+				<severityPerDay>0.155</severityPerDay>
 			</li>
 		</comps>
 		<stages>
