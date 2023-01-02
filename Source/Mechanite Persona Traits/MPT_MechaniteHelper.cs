@@ -88,6 +88,8 @@ namespace MPT_MechaniteHelper
             Hediff mechaniteCapacity = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
 
             //If they do and Hediff_MechaniteCapacity.IsInfected() was called do this...
+            //To Do: Currently this setup allows all Mechanite Plague Lich to recover
+            //the moment one Lich attacks and infects successfully. Fix this.
             if (plagueLich != null && targetPlagued)
             {
                 //PURGE THEM MECHANITES
