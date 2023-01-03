@@ -8,7 +8,7 @@ namespace MPT_MechaniteHelper
     {
         private readonly NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
 
-        //TODO: Expose these values in a Mod Options menu.
+        //TODO: Expose these values in a Mod Options menu for players.
         public float burstingFall = 6.5f;
         public float overflowingFall = 2.5f;
         public float swellingFall = 0.65f;
