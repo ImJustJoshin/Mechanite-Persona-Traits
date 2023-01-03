@@ -39,7 +39,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HediffDefs", "HediffDefs", "{AFA0CE07-4969-42C8-B774-86274D4FF2FD}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\1.4\Defs\HediffDefs\Hediff_MechaniteInfestation.xml = ..\..\1.4\Defs\HediffDefs\Hediff_MechaniteInfestation.xml
-		..\..\1.4\Defs\HediffDefs\Hediff_MechanitePlagueHelpers.xml = ..\..\1.4\Defs\HediffDefs\Hediff_MechanitePlagueHelpers.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NeedDefs", "NeedDefs", "{328CAEB0-5706-4B15-BB08-1DE0E9F1A3B5}"
