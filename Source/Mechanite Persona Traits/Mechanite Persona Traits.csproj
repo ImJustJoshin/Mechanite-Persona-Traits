@@ -40,10 +40,6 @@
       <HintPath>..\..\..\..\..\..\workshop\content\294100\2503246357\1.4\Assemblies\MechanitePlague.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MorePersonaTraits">
-      <HintPath>..\..\..\..\..\..\workshop\content\294100\2863308112\1.4\Assemblies\MorePersonaTraits.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,7 +54,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MPT_OnHitWorker_ApplyMechanite.cs" />
     <Compile Include="MPT_ThoughtWorker_NeedPlagueLust.cs" />
     <Compile Include="MPT_MechaniteHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

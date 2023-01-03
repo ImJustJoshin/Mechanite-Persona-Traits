@@ -50,17 +50,12 @@ So please, if you see values that are a little strange then shoot me a balance p
         <modExtensions>
             <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
                 <OnHitWorkers>
-                    <li Class="MPT_MechaniteHelper.OnHitWorker_ApplyMechanite">
-                        <HediffDef>MP_MechanitePlague</HediffDef>
-						<MechaniteLevel>1</MechaniteLevel>
-						<ProcChance>0.75</ProcChance>
-						<ProcMagnitude>0.75</ProcMagnitude>
-						<TargetSelf>false</TargetSelf>
-						<RequiresBio>true</RequiresBio>
-						<RequiresBothLiving>true</RequiresBothLiving>
-						<minInfectionSeverity>0.09</minInfectionSeverity>
-						<maxInfectionSeverity>0.12</maxInfectionSeverity>
-						<extraSpawns>0</extraSpawns>
+                    <li Class="MorePersonaTraits.WorkerClasses.OnHitWorkerClasses.OnHitWorker_ApplyHediff">
+                        <HediffDef>MPT_MechaniteUnion</HediffDef>
+                        <ProcMagnitude>1.00</ProcMagnitude>
+                        <ProcChance>0.75</ProcChance>
+                        <RequiresBothLiving>true</RequiresBothLiving>
+                        <RequiresBio>true</RequiresBio>
                     </li>
                 </OnHitWorkers>
             </li>
@@ -123,17 +118,12 @@ So please, if you see values that are a little strange then shoot me a balance p
         <modExtensions>
             <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
                 <OnHitWorkers>
-                    <li Class="MPT_MechaniteHelper.OnHitWorker_ApplyMechanite">
-                        <HediffDef>MP_MechanitePlague</HediffDef>
-						<MechaniteLevel>2</MechaniteLevel>
-						<ProcChance>1</ProcChance>
-						<ProcMagnitude>1</ProcMagnitude>
-						<TargetSelf>false</TargetSelf>
-						<RequiresBio>true</RequiresBio>
-						<RequiresBothLiving>true</RequiresBothLiving>
-						<minInfectionSeverity>0.13</minInfectionSeverity>
-						<maxInfectionSeverity>0.16</maxInfectionSeverity>
-						<extraSpawns>1</extraSpawns>
+                    <li Class="MorePersonaTraits.WorkerClasses.OnHitWorkerClasses.OnHitWorker_ApplyHediff">
+                        <HediffDef>MPT_MechaniteInfester</HediffDef>
+                        <ProcMagnitude>1.00</ProcMagnitude>
+                        <ProcChance>1.00</ProcChance>
+                        <RequiresBothLiving>true</RequiresBothLiving>
+                        <RequiresBio>true</RequiresBio>
                     </li>
                 </OnHitWorkers>
             </li>
