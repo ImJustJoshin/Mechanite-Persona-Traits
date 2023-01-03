@@ -162,7 +162,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<preventsPregnancy>true</preventsPregnancy>
 		<comps>
 			<li Class="HediffCompProperties_SeverityPerDay">
-				<severityPerDay>0.305</severityPerDay>
+				<severityPerDay>0.155</severityPerDay>
 			</li>
 		</comps>
 		<stages>

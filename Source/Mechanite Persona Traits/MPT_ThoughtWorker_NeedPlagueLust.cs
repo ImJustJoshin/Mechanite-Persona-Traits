@@ -52,13 +52,13 @@ namespace MPT_MechaniteHelper
             }
             else if (hasPlaguelust.CurLevelPercentage < 0.25f && hasPlaguelust.CurLevelPercentage >= 0.10f)
             {
-                //- 24 Mood for keeping Need "Plaguelust" below 25% but no lower than 10%
+                //- 24 Mood for keeping Need "Plaguelust" below 45% but no lower than 25%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
                 && p.HitPoints > 0.001
                     ? true
                     : ThoughtState.ActiveAtStage(4);
             }
-                //- 36 Mood for keeping Need "Plaguelust" below 10% - PREPARE FOR OVERLOAD BABY!
+                //- 36 Mood for keeping Need "Plaguelust" below 25%
             else return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
                 && p.HitPoints > 0.001
                     ? true
