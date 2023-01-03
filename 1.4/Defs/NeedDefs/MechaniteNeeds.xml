@@ -97,7 +97,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<label>Overload Boost</label>
 		<hediffClass>Hediff_High</hediffClass>
 		<description>This bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
-		<defaultLabelColor>(0.7,0.1,0.1)</defaultLabelColor>
+		<defaultLabelColor>(0.6,0.2,0.2)</defaultLabelColor>
 		<makesAlert>false</makesAlert>
 		<maxSeverity>1.0</maxSeverity>
 		<initialSeverity>1.0</initialSeverity>
