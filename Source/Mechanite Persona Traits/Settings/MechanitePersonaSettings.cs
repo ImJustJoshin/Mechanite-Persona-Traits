@@ -29,7 +29,6 @@ namespace MechanitePersonaTraits
             base.ExposeData();
         }
 
-        //The probably important part that allows us to set our settings through GUI.
         public void DoSettingsWindowContents(Rect inRect)
         {
             //Begin Settings

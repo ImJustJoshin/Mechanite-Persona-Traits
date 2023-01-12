@@ -18,7 +18,7 @@ namespace MechanitePersonaTraits
             //Check if pawn has Mechanite Capacity...
             Hediff mechaniteCapacity = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
 
-            //This works...? 
+            //This works..? 
             if (mechaniteCapacity != null)
             {
                 if (mechaniteCapacity.Severity >= 0.90f)

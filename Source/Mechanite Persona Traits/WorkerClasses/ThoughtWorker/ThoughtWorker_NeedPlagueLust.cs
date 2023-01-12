@@ -22,7 +22,7 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
             {
                 //+ 20 Mood for keeping Need "Plaguelust" at or above 85%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(0);
             }
@@ -30,7 +30,7 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
             {
                 //+ 12 Mood for keeping Need "Plaguelust" at or above 65% but lower than 85%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(1);
             }
@@ -38,7 +38,7 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
             {
                 //+ 4 Mood for keeping Need "Plaguelust" at or above 45% but lower than 65%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(2);
             }
@@ -46,7 +46,7 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
             {
                 //- 8 Mood for keeping Need "Plaguelust" below 45% but no lower than 25%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(3);
             }
@@ -54,13 +54,13 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
             {
                 //- 24 Mood for keeping Need "Plaguelust" below 25% but no lower than 10%
                 return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(4);
             }
-                //- 36 Mood for keeping Need "Plaguelust" below 10% - PREPARE FOR OVERLOAD BABY!
+                //- 36 Mood for keeping Need "Plaguelust" below 10% - PREPARE FOR OVERLOAD!
             else return p.equipment.bondedWeapon.TryGetComp<CompBladelinkWeapon>().TraitsListForReading.Exists(trait => trait.bondedThought == def)
-                && p.HitPoints > 0.001
+                && p.HitPoints > 0.0001
                     ? true
                     : ThoughtState.ActiveAtStage(5);
         }

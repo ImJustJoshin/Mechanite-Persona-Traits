@@ -36,7 +36,6 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             {
                 //Apply extra damage then if wounded, infect using XML defined variables.
                 //Might add something more here. If at Overload, purge more mechanites...
-                //into your enemies for an even greater infection potential!
                 DamageWorker.DamageResult damageResult = (infectedThing as Pawn).TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("MPT_Damage_MechaniteInfestation", true), 3f, 0.5f, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown, null, true, true));
                 if (damageResult.wounded)
                 {
