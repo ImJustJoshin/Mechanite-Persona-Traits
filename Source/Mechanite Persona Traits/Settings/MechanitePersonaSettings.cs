@@ -22,6 +22,14 @@ namespace MechanitePersonaTraits
 
         public override void ExposeData()
         {
+            Scribe_Values.Look(ref burstingFallSetting, "MPT_MechaniteCapacity.Bursting", 6.5f);
+            Scribe_Values.Look(ref overflowingFallSetting, "MPT_MechaniteCapacity.Overflowing", 2.5f);
+            Scribe_Values.Look(ref swellingFallSetting, "MPT_MechaniteCapacity.Swelling", 0.65f);
+            Scribe_Values.Look(ref normalFallSetting, "MPT_MechaniteCapacity.Normal", 0.35f);
+
+            Scribe_Values.Look(ref mechaniteRecovery, "MPT_MechaniteCapacity.Recovery", 0.048f);
+            Scribe_Values.Look(ref plaguelustRecovery, "MPT_Need_MechanitePlagueLich.Recovery", 0.085f);
+
             Scribe_Values.Look(ref infectorTraitSpawn, "MPT_OnHit_Mechanite", true);
             Scribe_Values.Look(ref injectorTraitSpawn, "MPT_OnHit_MechaniteSelf", true);
             Scribe_Values.Look(ref infesterTraitSpawn, "MPT_Unique_MechaniteInfester", true);
