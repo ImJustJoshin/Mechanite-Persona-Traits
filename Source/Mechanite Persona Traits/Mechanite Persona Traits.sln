@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.4", "1.4", "{F8D5A73E-358
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{B9934D78-4472-45EC-A816-8EC5D8859040}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\1.4\Assemblies\MechanitePersonaTraits.dll = ..\..\1.4\Assemblies\MechanitePersonaTraits.dll
 		..\..\1.4\Assemblies\MPT_MechaniteHelper.dll = ..\..\1.4\Assemblies\MPT_MechaniteHelper.dll
 	EndProjectSection
 EndProject

@@ -7,8 +7,8 @@
     <ProjectGuid>{46107F89-1A93-4085-A482-F99BB968EED0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MPT_MechaniteHelper</RootNamespace>
-    <AssemblyName>MPT_MechaniteHelper</AssemblyName>
+    <RootNamespace>MechanitePersonaTraits</RootNamespace>
+    <AssemblyName>MechanitePersonaTraits</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -58,10 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MPT_OnHitWorker_ApplyMechanite.cs" />
-    <Compile Include="MPT_ThoughtWorker_NeedPlagueLust.cs" />
-    <Compile Include="MPT_MechaniteHelper.cs" />
+    <Compile Include="Settings\MechanitePersonaSettings.cs" />
+    <Compile Include="WorkerClasses\OnHit\OnHitWorker_ApplyMechanite.cs" />
+    <Compile Include="WorkerClasses\ThoughtWorker\ThoughtWorker_NeedPlagueLust.cs" />
+    <Compile Include="HediffClasses\Hediff_MechaniteCapacity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Patches\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

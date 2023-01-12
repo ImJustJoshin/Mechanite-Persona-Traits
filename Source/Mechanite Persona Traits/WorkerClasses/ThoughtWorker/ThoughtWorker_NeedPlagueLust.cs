@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace MPT_MechaniteHelper
+namespace MechanitePersonaTraits.ThoughtWorkerClasses
 {
     // Derived from Rimworld Source Code, ThoughtWorker_NeedFood
     public class ThoughtWorker_NeedPlagueLust : ThoughtWorker_WeaponTrait
