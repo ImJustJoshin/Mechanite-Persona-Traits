@@ -83,6 +83,24 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 						<mtbDays>0.05</mtbDays>
 					</li>
 				</hediffGivers>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.10</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.20</offset>
+					</li>
+					<li>
+						<capacity>BloodPumping</capacity>
+						<offset>0.20</offset>
+					</li>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.10</offset>
+					</li>
+				</capMods>
 			</li>
 		</stages>
 		<modExtensions>
@@ -109,7 +127,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		</comps>
 		<stages>
 			<li>
-				<painFactor>0.4</painFactor>
+				<painFactor>0.8</painFactor>
 				<mentalStateGivers>
 					<li>
 						<mentalState>Manhunter</mentalState>
