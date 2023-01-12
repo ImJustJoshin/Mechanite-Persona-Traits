@@ -112,7 +112,7 @@ So please, if you see values that are a little strange then shoot me a balance p
 			<IncomingDamageFactor>-0.1</IncomingDamageFactor>
 			<InjuryHealingFactor>0.15</InjuryHealingFactor>
 			<LifespanFactor>0.2</LifespanFactor>
-			<PainShockThreshold>-0.1</PainShockThreshold>
+			<PainShockThreshold>0.1</PainShockThreshold>
         </equippedStatOffsets>
 		<exclusionTags>
 			<li>NeverBond</li>
