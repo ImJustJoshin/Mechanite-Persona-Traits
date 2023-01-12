@@ -40,26 +40,25 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<maxSeverity>1.0</maxSeverity>
 		<causesNeed>MPT_Need_MechanitePlagueLich</causesNeed>
+		<preventsPregnancy>true</preventsPregnancy>
 		<isBad>false</isBad>
 		<stages>
 			<li>
 				<makeImmuneTo>
 					<li>MP_MechanitePlague</li>
 				</makeImmuneTo>
-				<painFactor>0.8</painFactor>
-				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
 				<capMods>
 					<li>
 						<capacity>Consciousness</capacity>
-						<offset>0.05</offset>
+						<offset>0.10</offset>
 					</li>
 					<li>
 						<capacity>Moving</capacity>
-						<offset>0.05</offset>
+						<offset>0.15</offset>
 					</li>
 					<li>
 						<capacity>Sight</capacity>
-						<offset>0.10</offset>
+						<offset>0.05</offset>
 					</li>
 					<li>
 						<capacity>BloodPumping</capacity>
@@ -67,11 +66,11 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 					</li>
 					<li>
 						<capacity>Metabolism</capacity>
-						<offset>0.10</offset>
+						<offset>0.15</offset>
 					</li>
 					<li>
 						<capacity>Breathing</capacity>
-						<offset>0.15</offset>
+						<offset>0.10</offset>
 					</li>
 				</capMods>
 			</li>
@@ -97,7 +96,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<label>Overload Boost</label>
 		<hediffClass>Hediff_High</hediffClass>
 		<description>This bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
-		<defaultLabelColor>(0.6,0.2,0.2)</defaultLabelColor>
+		<defaultLabelColor>(0.8,0.0,0.2)</defaultLabelColor>
 		<makesAlert>false</makesAlert>
 		<maxSeverity>1.0</maxSeverity>
 		<initialSeverity>1.0</initialSeverity>
@@ -111,7 +110,6 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<stages>
 			<li>
 				<painFactor>0.4</painFactor>
-				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
 				<mentalStateGivers>
 					<li>
 						<mentalState>Manhunter</mentalState>
@@ -136,10 +134,6 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 						<offset>0.30</offset>
 					</li>
 					<li>
-						<capacity>Metabolism</capacity>
-						<offset>0.05</offset>
-					</li>
-					<li>
 						<capacity>Breathing</capacity>
 						<offset>0.15</offset>
 					</li>
@@ -150,7 +144,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 	
 	<HediffDef>
 		<defName>MPT_MechaniteCapacity</defName>
-		<hediffClass>MPT_MechaniteHelper.Hediff_MechaniteCapacity</hediffClass>
+		<hediffClass>MechanitePersonaTraits.Hediff_MechaniteCapacity</hediffClass>
 		<label>Mechanite Capacity</label>
 		<description>As the corrupted persona core uses their bondmate's body to create more mechanites and flood's their mind with unyielding desire to infect others, it has become apparent that the persona core has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess to drive their bondmate's plaguelust down far faster than normal.</description>
 		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
@@ -159,7 +153,6 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<maxSeverity>1.0</maxSeverity>
 		<isBad>false</isBad>
 		<initialSeverity>0.25</initialSeverity>
-		<preventsPregnancy>true</preventsPregnancy>
 		<comps>
 			<li Class="HediffCompProperties_SeverityPerDay">
 				<severityPerDay>0.305</severityPerDay>
@@ -169,23 +162,33 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 			<li>
 				<minSeverity>0.03</minSeverity>
 				<label>Depleted</label>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
 			</li>
 			<li>
 				<minSeverity>0.10</minSeverity>
 				<label>Diminished</label>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.5</hungerRateFactorOffset>
 			</li>
 			<li>
 				<minSeverity>0.25</minSeverity>
 				<label>Normal</label>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.33</hungerRateFactorOffset>
 			</li>
 			<li>
 				<minSeverity>0.50</minSeverity>
 				<label>Swelling</label>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.25</hungerRateFactorOffset>
 			</li>
 			<li>
 				<minSeverity>0.75</minSeverity>
 				<label>Overflowing</label>
 				<vomitMtbDays>2</vomitMtbDays>
+				<painFactor>0.8</painFactor>
+				<hungerRateFactorOffset>0.1</hungerRateFactorOffset>
 			</li>
 			<li>
 				<minSeverity>0.90</minSeverity>

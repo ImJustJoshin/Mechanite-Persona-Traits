@@ -12,7 +12,7 @@ MPT_Thought_Plaguelust: This and the mood debuff is to show that the persona cor
 <Defs>   
 	<ThoughtDef>
         <defName>MPT_Thought_Plaguelust</defName>
-        <workerClass>MPT_MechaniteHelper.ThoughtWorker_NeedPlagueLust</workerClass>
+        <workerClass>MechanitePersonaTraits.ThoughtWorkerClasses.ThoughtWorker_NeedPlagueLust</workerClass>
 		<validWhileDespawned>true</validWhileDespawned>
         <stages>
 			<li>

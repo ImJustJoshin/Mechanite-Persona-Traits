@@ -50,11 +50,9 @@ So please, if you see values that are a little strange then shoot me a balance p
         <modExtensions>
             <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
                 <OnHitWorkers>
-                    <li Class="MPT_MechaniteHelper.OnHitWorker_ApplyMechanite">
-                        <HediffDef>MP_MechanitePlague</HediffDef>
+                    <li Class="MechanitePersonaTraits.OnHitWorkerClasses.OnHitWorker_ApplyMechanite">
 						<MechaniteLevel>1</MechaniteLevel>
 						<ProcChance>0.75</ProcChance>
-						<ProcMagnitude>0.75</ProcMagnitude>
 						<TargetSelf>false</TargetSelf>
 						<RequiresBio>true</RequiresBio>
 						<RequiresBothLiving>true</RequiresBothLiving>
@@ -101,15 +99,20 @@ So please, if you see values that are a little strange then shoot me a balance p
         <label>mechanite infester</label>
         <description>This weapon's persona has most of its mind corrupted by the Mechanite Plague... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona away into the deepest hole you can find...\n\nThe moment this Persona core bonds with another, their minds will be shattered by the Mechanite Plague and forced into spreading it whenever and wherever they can. Failure to do so will result in a plague-fueled rampage.</description>
         <commonality>0.3</commonality>
-        <marketValueOffset>-1000</marketValueOffset>
+        <marketValueOffset>-1</marketValueOffset>
 		<bondedHediffs>
             <li>MPT_Bonded_MechanitePlagueLich</li>
 			<li>MPT_MechaniteCapacity</li>
         </bondedHediffs>
 		<bondedThought>MPT_Thought_Plaguelust</bondedThought>
 		<equippedStatOffsets>
-			<BedHungerRateFactor>0.50</BedHungerRateFactor>
+			<PawnBeauty>-1.5</PawnBeauty>
 			<EatingSpeed>0.50</EatingSpeed>
+			<ImmunityGainSpeedFactor>0.2</ImmunityGainSpeedFactor>
+			<IncomingDamageFactor>-0.1</IncomingDamageFactor>
+			<InjuryHealingFactor>0.2</InjuryHealingFactor>
+			<LifespanFactor>0.2</LifespanFactor>
+			<PainShockThreshold>-0.1</PainShockThreshold>
         </equippedStatOffsets>
 		<exclusionTags>
 			<li>NeverBond</li>
@@ -123,11 +126,9 @@ So please, if you see values that are a little strange then shoot me a balance p
         <modExtensions>
             <li Class="MorePersonaTraits.Extensions.WeaponTraitOnHitExtension">
                 <OnHitWorkers>
-                    <li Class="MPT_MechaniteHelper.OnHitWorker_ApplyMechanite">
-                        <HediffDef>MP_MechanitePlague</HediffDef>
+                    <li Class="MechanitePersonaTraits.OnHitWorkerClasses.OnHitWorker_ApplyMechanite">
 						<MechaniteLevel>2</MechaniteLevel>
 						<ProcChance>1</ProcChance>
-						<ProcMagnitude>1</ProcMagnitude>
 						<TargetSelf>false</TargetSelf>
 						<RequiresBio>true</RequiresBio>
 						<RequiresBothLiving>true</RequiresBothLiving>
