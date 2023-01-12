@@ -99,7 +99,7 @@ So please, if you see values that are a little strange then shoot me a balance p
         <label>mechanite infester</label>
         <description>This weapon's persona has most of its mind corrupted by the Mechanite Plague... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona away into the deepest hole you can find...\n\nThe moment this Persona core bonds with another, their minds will be shattered by the Mechanite Plague and forced into spreading it whenever and wherever they can. Failure to do so will result in a plague-fueled rampage.</description>
         <commonality>0.3</commonality>
-        <marketValueOffset>-1</marketValueOffset>
+        <marketValueOffset>-200</marketValueOffset>
 		<bondedHediffs>
             <li>MPT_Bonded_MechanitePlagueLich</li>
 			<li>MPT_MechaniteCapacity</li>
@@ -108,9 +108,9 @@ So please, if you see values that are a little strange then shoot me a balance p
 		<equippedStatOffsets>
 			<PawnBeauty>-1.5</PawnBeauty>
 			<EatingSpeed>0.50</EatingSpeed>
-			<ImmunityGainSpeedFactor>0.2</ImmunityGainSpeedFactor>
+			<ImmunityGainSpeedFactor>0.15</ImmunityGainSpeedFactor>
 			<IncomingDamageFactor>-0.1</IncomingDamageFactor>
-			<InjuryHealingFactor>0.2</InjuryHealingFactor>
+			<InjuryHealingFactor>0.15</InjuryHealingFactor>
 			<LifespanFactor>0.2</LifespanFactor>
 			<PainShockThreshold>-0.1</PainShockThreshold>
         </equippedStatOffsets>
