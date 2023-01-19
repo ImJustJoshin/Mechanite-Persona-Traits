@@ -14,9 +14,7 @@ namespace MechanitePersonaTraits
         public float mechaniteRecovery, mechaniteDefault = 0.048f;
         public float plaguelustRecovery, plaguelustDefault = 0.085f;
 
-        public bool infectorTraitSpawn = true;
-        public bool injectorTraitSpawn = true;
-        public bool infesterTraitSpawn = true;
+        public bool infectorTraitSpawn, injectorTraitSpawn, infesterTraitSpawn = true;
 
         public bool defaultSettings = false;
 
