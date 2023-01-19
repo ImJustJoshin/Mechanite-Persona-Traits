@@ -34,8 +34,6 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             //Mechanite Infester - Advanced
             else if (MechaniteLevel == 2)
             {
-                //Apply extra damage then if wounded, infect using XML defined variables.
-                //Might add something more here. If at Overload, purge more mechanites...
                 DamageWorker.DamageResult damageResult = (infectedThing as Pawn).TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("MPT_Damage_MechaniteInfestation", true), 3f, 0.5f, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown, null, true, true));
                 if (damageResult.wounded)
                 {
@@ -54,7 +52,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
 
         private static void PurgeMechanites(Pawn pawn, int level)
         {
-            //Reduce Mechanite Capacity and increase Plaguelust if origin pawn is a Mechanite Plague Lich
+            //Reduce Mechanite Capacity and increase need Plaguelust if origin pawn is a Mechanite Plague Lich
             //With this being a WeaponTrait onHitWorker now instead of two hediffClasses that I made liches
             //are now truly seperate from each other and you may now have an infinite amount of liches!
             //Question: Why would you do that though? You monster.
