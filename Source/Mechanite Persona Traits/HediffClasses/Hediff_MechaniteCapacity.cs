@@ -4,7 +4,7 @@ using Verse;
 namespace MechanitePersonaTraits
 {
     //The Big One!
-    class Hediff_MechaniteCapacity : HediffWithComps
+    class Hediff_MechaniteCapacity : Hediff_High
     {
         private readonly NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
 
@@ -51,20 +51,6 @@ namespace MechanitePersonaTraits
                     //Urges are satisfied due to diminished mechanite reserves. How nice.
                     plaguelust.fallPerDay = 0f;
                 }
-            }
-        }
-
-        //This little guy gives the MPT_MechaniteCapacity hediff a neat little bar
-        //To visually show how high/low it is! :)
-        public override string SeverityLabel
-        {
-            get
-            {
-                if (this.Severity <= 0f)
-                {
-                    return null;
-                }
-                return this.Severity.ToStringPercent("F0");
             }
         }
 
