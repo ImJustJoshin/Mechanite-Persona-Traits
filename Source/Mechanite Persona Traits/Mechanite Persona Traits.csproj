@@ -62,14 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\MechaniteUIPatch.cs" />
     <Compile Include="Settings\MechanitePersonaSettings.cs" />
     <Compile Include="WorkerClasses\OnHit\OnHitWorker_ApplyMechanite.cs" />
     <Compile Include="WorkerClasses\ThoughtWorker\ThoughtWorker_NeedPlagueLust.cs" />
     <Compile Include="HediffClasses\Hediff_MechaniteCapacity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Patches\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
