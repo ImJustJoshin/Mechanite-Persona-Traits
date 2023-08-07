@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using System;
+using RimWorld;
 using MP_MechanitePlague;
 using MorePersonaTraits.WorkerClasses.OnHitWorkerClasses;
 using Verse;
@@ -8,8 +9,6 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
     //Modified ApplyHediff from More Persona Traits by Arquebus
     public class OnHitWorker_ApplyMechanite : OnHitWorker
     {
-        //public HediffDef HediffDef = DefDatabase<HediffDef>.GetNamed("MP_MechanitePlague");
-
         //Additional variables added by me.
         public int MechaniteLevel = 0;
         public float minInfectionSeverity = 0f;
@@ -22,7 +21,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             PurgeMechanites(originThing as Pawn, MechaniteLevel);
         }
 
-        private void ApplyMechanites(Thing infectedThing)
+        void ApplyMechanites(Thing infectedThing)
         {
             //Mechanite Infector - Basic
             if (MechaniteLevel == 1)
@@ -34,6 +33,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             //Mechanite Infester - Advanced
             else if (MechaniteLevel == 2)
             {
+                //As the Advanced version, also applies some damage to the pawn.
                 DamageWorker.DamageResult damageResult = (infectedThing as Pawn).TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("MPT_Damage_MechaniteInfestation", true), 3f, 0.5f, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown, null, true, true));
                 if (damageResult.wounded)
                 {
