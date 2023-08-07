@@ -3,10 +3,10 @@
 <!--
 A ThoughtDef.
 At the moment, I hope it does the following:
-- Add a bonded thought that reduce mood gradually as Plaguelust decreases.
+- Add a bonded thought that will reduce mood gradually as Plaguelust decreases but increase if Plaguelust is satisfied.
 
 New Additions:
-MPT_Thought_Plaguelust: This and the mood debuff is to show that the persona core really IS driving you insane.
+MPT_Thought_Plaguelust: This thought plus its accompanying mood debuff will show that the persona weapon really IS driving you insane.
 -->
 
 <Defs>   
@@ -42,7 +42,7 @@ MPT_Thought_Plaguelust: This and the mood debuff is to show that the persona cor
             </li>
 			<li>
                 <label>{WEAPON}'s plaguelust</label>
-                <description>{WEAPON} IS FLOODING MY MIND! MECHANITES INVADING EVERY INCH OF MY BODY! THIS IS UNBEARABLE!</description>
+                <description>{WEAPON} IS FLOODING MY MIND! MECHANITES INVADING EVERY INCH OF MY BODY! AAAAAAAHHHHHH!</description>
                 <baseMoodEffect>-36</baseMoodEffect>
             </li>
         </stages>
