@@ -87,20 +87,6 @@ namespace MechanitePersonaTraits
             listingStandard.Label("Plaguelust recovery: " + decimal.Round((decimal)plaguelustRecovery * 100, 2).ToString() + "%", -1f, "After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges of a Mechanite Plague Lich.\n\nThis number determines how much Plaguelust will be increased by.");
             plaguelustRecovery = listingStandard.Slider(plaguelustRecovery, 0.025f, 0.100f);
 
-            defaultSettings = listingStandard.ButtonText("Reset settings", null, 0.2f);
-            if (defaultSettings == true)
-            {
-                burstingFallSetting = listingStandard.Slider(burstingFallDefault, 0.1f, 10f);
-                overflowingFallSetting = listingStandard.Slider(overflowingFallDefault, 0.1f, 10f);
-                swellingFallSetting = listingStandard.Slider(swellingFallDefault, 0.1f, 10f);
-                normalFallSetting = listingStandard.Slider(normalFallDefault, 0.1f, 10f);
-
-                mechaniteRecovery = listingStandard.Slider(mechaniteDefault, 0.025f, 0.100f);
-                plaguelustRecovery = listingStandard.Slider(plaguelustDefault, 0.025f, 0.100f);
-
-                defaultSettings = false;
-            }
-
             //----Recovery Settings End
 
             //----Other Settings Start
@@ -115,7 +101,7 @@ namespace MechanitePersonaTraits
             listingStandard.CheckboxLabeled("Enable/Disable - " + "Negative".Colorize(Color.red) + " weapon trait: Mechanite Injector.      Default: " + "Enabled".Colorize(Color.green), ref injectorTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Injector, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
             listingStandard.CheckboxLabeled("Enable/Disable - " + "Positive...?".Colorize(Color.yellow) + " weapon trait: Mechanite Infester.   Default: " + "Enabled".Colorize(Color.green), ref infesterTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Infester, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
             
-            //Can't set commonality to zero because hardcoded error.
+            //Can't set commonality to zero because hardcoded to be > 0.
             //However, ensuring next to impossible chances is basically the same thing.
             if (infectorTraitSpawn == false)
             {
@@ -133,6 +119,24 @@ namespace MechanitePersonaTraits
             {
                 WeaponTraitDef mechaniteInfester = DefDatabase<WeaponTraitDef>.GetNamed("MPT_Unique_MechaniteInfester");
                 mechaniteInfester.commonality = 0.0000001f;
+            }
+
+            defaultSettings = listingStandard.ButtonText("Reset settings", null, 0.2f);
+            if (defaultSettings == true)
+            {
+                burstingFallSetting = listingStandard.Slider(burstingFallDefault, 0.1f, 10f);
+                overflowingFallSetting = listingStandard.Slider(overflowingFallDefault, 0.1f, 10f);
+                swellingFallSetting = listingStandard.Slider(swellingFallDefault, 0.1f, 10f);
+                normalFallSetting = listingStandard.Slider(normalFallDefault, 0.1f, 10f);
+
+                mechaniteRecovery = listingStandard.Slider(mechaniteDefault, 0.025f, 0.100f);
+                plaguelustRecovery = listingStandard.Slider(plaguelustDefault, 0.025f, 0.100f);
+
+                infectorTraitSpawn = true;
+                injectorTraitSpawn = true;
+                infesterTraitSpawn = true;
+
+                defaultSettings = false;
             }
 
             //----Other Settings End
