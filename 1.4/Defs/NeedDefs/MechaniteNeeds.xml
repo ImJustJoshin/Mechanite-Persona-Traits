@@ -42,6 +42,13 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<causesNeed>MPT_Need_MechanitePlagueLich</causesNeed>
 		<preventsPregnancy>true</preventsPregnancy>
 		<isBad>false</isBad>
+		<comps>
+			<li Class="MP_MechanitePlague.HediffCompProperties_MechPlagueSpawnFromCorpse">
+				<thingSpawned>MP_Mech_Burster</thingSpawned>
+				<bonusSpawnCount>1</bonusSpawnCount>
+				<forcePlayerFaction>true</forcePlayerFaction>
+			</li>
+		</comps>
 		<stages>
 			<li>
 				<makeImmuneTo>
@@ -113,7 +120,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<defName>MPT_Hediff_Overload</defName>
 		<label>Overload Boost</label>
 		<hediffClass>Hediff_High</hediffClass>
-		<description>This bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
+		<description>The bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
 		<defaultLabelColor>(0.8,0.0,0.2)</defaultLabelColor>
 		<makesAlert>false</makesAlert>
 		<maxSeverity>1.0</maxSeverity>
@@ -123,6 +130,11 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 			<li Class="HediffCompProperties_SeverityPerDay">
 				<severityPerDay>-3</severityPerDay>
 				<showDaysToRecover>true</showDaysToRecover>
+			</li>
+			<li Class="MP_MechanitePlague.HediffCompProperties_MechPlagueSpawnFromCorpse">
+				<thingSpawned>MP_Mech_Burster</thingSpawned>
+				<bonusSpawnCount>3</bonusSpawnCount>
+				<forcePlayerFaction>true</forcePlayerFaction>
 			</li>
 		</comps>
 		<stages>
@@ -162,9 +174,9 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 	
 	<HediffDef>
 		<defName>MPT_MechaniteCapacity</defName>
-		<hediffClass>MechanitePersonaTraits.Hediff_MechaniteCapacity</hediffClass>
+		<hediffClass>MechanitePersonaTraits.HediffClasses.Hediff_MechaniteCapacity</hediffClass>
 		<label>Mechanite Capacity</label>
-		<description>As the corrupted persona core uses their bondmate's body to create more mechanites and flood's their mind with unyielding desire to infect others, it has become apparent that the persona core has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess to drive their bondmate's plaguelust down far faster than normal.</description>
+		<description>As the unstable persona weapon uses their bondmate's body to create more mechanites and floods their mind with the unyielding desire to infect others, it has become apparent that the persona weapon has lost all sense and reason when it comes to limits and will continue producing mechanites until their bondmate bursts.\n\nThe only way to allivate this problem is to infect others with the Mechanite Plague, doing so will purge the excess mechanites.\n\nShould the bondmate ignore the overwhelming amount of mechanites coursing through their veins then the persona core will use the excess mechanites to drive their bondmate's plaguelust down far faster than normal thus inevitably causing a mental break.</description>
 		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<minSeverity>0.001</minSeverity>
