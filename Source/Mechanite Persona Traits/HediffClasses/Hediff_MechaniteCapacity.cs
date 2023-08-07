@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace MechanitePersonaTraits
+namespace MechanitePersonaTraits.HediffClasses
 {
     //The Big One!
     class Hediff_MechaniteCapacity : Hediff_High
