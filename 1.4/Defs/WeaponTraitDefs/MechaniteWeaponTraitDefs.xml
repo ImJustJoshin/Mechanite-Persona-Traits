@@ -18,12 +18,12 @@ that the player will have to overcome! The full list is as follows:
 + Plaguelust fallPerDay is dynamically changed depending on how high/low Mechanite Capacity is.
 (This is to prevent extreme micromanagement so a pawn that just went out fighting and got hospitalized doesn't have to worry...
 about immediately getting fixed up to go fighting again, they can just wait and heal... BUT NOT FOREVER.)
-+ Provides capability bonuses to the bondmate which grows stronger if they failed to spread the plague (Overload).
++/-Provides capability bonuses to the bondmate which grows stronger if they failed to spread the plague (Overload).
 +/- These bonuses will turn against you as pawns who fail to spread the plague to get these bonuses will turn Manhunter within a few seconds of reaching this critical stage.
 However, in the hands of a good player this MIGHT be a good thing.
-- The persona core isn't asking you to spread the plague, its a demand that must be balanced with other needs. This power should mainly be used on pawns that go out fighting decently often.
+- The persona weapon isn't asking you to spread the plague, its a demand that must be balanced with other needs. This power should mainly be used on pawns that go out fighting decently often.
 - Considering the fact that the bonded persona core is using it's bondmates body for resources to fabicrate the Mechanite Plague within them, this pawn will burn through food reserves.
-- If this pawn is female, they sacrifice their future in order to wield this persona core. (Pregnancy will always fail)
+- If this pawn is female, their future is sacrificed in order to wield this persona weapon. (Pregnancy will always fail)
 - Positive mood buff flips to harsh negative debuff if pawn fails to spread the plague regulary. (Worse than Mind-Shattering Pain)
 - Plaguelust fallPerDay is dynamically changed depending on how high/low Mechanite Capacity is.
 (Let Mechanite Capacity get too high and Plaguelust will fall dramatically forcing the player to fight humanlike targets on their own terms or let Manhunter do it for them.
@@ -37,12 +37,13 @@ So please, if you see values that are a little strange then shoot me a balance p
 	<WeaponTraitDef>
         <defName>MPT_OnHit_Mechanite</defName>
         <label>mechanite infector</label>
-        <description>This weapon's persona has adopted the art of incubated destruction. Upon hitting a target, this weapon has a chance to apply/increase the mechanite plague.\n\n75% Chance to apply the Mechanite Plague at 0.09 severity.</description>
+        <description>This weapon's persona has adopted the art of incubated destruction. Upon hitting a target, this weapon has a chance to apply/increase the mechanite plague.</description>
         <commonality>0.5</commonality>
         <marketValueOffset>600</marketValueOffset>
 		<exclusionTags>
 			<li>MPT_OnHit_DrainBlood</li>
             <li>MPT_Bonded_ImmuneMechanite</li>
+			<li>MPT_Unique_MechaniteInfester</li>
         </exclusionTags>
         <descriptionHyperlinks>
 			<HediffDef>MP_MechanitePlague</HediffDef>
@@ -69,11 +70,12 @@ So please, if you see values that are a little strange then shoot me a balance p
 	<WeaponTraitDef>
         <defName>MPT_OnHit_MechaniteSelf</defName>
         <label>mechanite injector</label>
-        <description>This weapon's persona, in awe of the mechanoid hives creativity, decided to spread their "gift" to their bondmate. Upon hitting a target, there is a small chance that the user will contract the mechanite plague.\n\nNote: Dying from the mechanite plague as a result of the persona's love for the hives will result in HOSTILE bursters being spawned.</description>
+        <description>This weapon's persona, in awe of the mechanoid hives creativity, decided to spread their "gift" to their bondmate. Upon hitting a target, there is a small chance that the user will contract the mechanite plague.\n\nNOTE: Dying with the mechanite plague caused by the persona's love for the mechanoid hives will result in HOSTILE bursters being spawned.</description>
         <commonality>0.5</commonality>
         <marketValueOffset>-1000</marketValueOffset>
         <exclusionTags>
             <li>MPT_Bonded_ImmuneMechanite</li>
+			<li>MPT_Unique_MechaniteInfester</li>
         </exclusionTags>
         <descriptionHyperlinks>
             <HediffDef>MP_MechanitePlague</HediffDef>
@@ -97,8 +99,8 @@ So please, if you see values that are a little strange then shoot me a balance p
 	<WeaponTraitDef>
         <defName>MPT_Unique_MechaniteInfester</defName>
         <label>mechanite infester</label>
-        <description>This weapon's persona has most of its mind corrupted by the Mechanite Plague... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona away into the deepest hole you can find...\n\nThe moment this Persona core bonds with another, their minds will be shattered by the Mechanite Plague and forced into spreading it whenever and wherever they can. Failure to do so will result in a plague-fueled rampage.</description>
-        <commonality>0.3</commonality>
+        <description>This weapon's persona is unstable due to mechanite infestation... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona weapon away into the deepest hole you can find...\n\nThe moment this persona weapon bonds with another, their mind and bodies will be altered by the mechanite infestation and forced into spreading the mechanite plague whenever and wherever they can. Failure to do so WILL result in a plague-fueled rampage.</description>
+        <commonality>0.2</commonality>
         <marketValueOffset>-200</marketValueOffset>
 		<bondedHediffs>
             <li>MPT_Bonded_MechanitePlagueLich</li>
@@ -116,6 +118,8 @@ So please, if you see values that are a little strange then shoot me a balance p
         </equippedStatOffsets>
 		<exclusionTags>
 			<li>NeverBond</li>
+			<li>MPT_OnHit_Mechanite</li>
+			<li>MPT_OnHit_MechaniteSelf</li>
 			<li>MPT_OnKill_NeedFilledChemical</li>
 			<li>MPT_Bonded_Addiction</li>
             <li>MPT_Bonded_ImmuneMechanite</li>
