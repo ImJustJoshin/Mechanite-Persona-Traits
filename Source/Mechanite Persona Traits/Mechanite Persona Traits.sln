@@ -57,6 +57,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeaponTraitDefs", "WeaponTr
 		..\..\1.4\Defs\WeaponTraitDefs\MechaniteWeaponTraitDefs.xml = ..\..\1.4\Defs\WeaponTraitDefs\MechaniteWeaponTraitDefs.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Languages", "Languages", "{3C2F129A-4255-4F19-8721-29D1AA232B72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "English", "English", "{0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keyed", "Keyed", "{53F20ED6-C314-4606-B618-184032B1C992}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Languages\English\Keyed\MechanitePersonaTraits_English_LanguageData.xml = ..\..\Languages\English\Keyed\MechanitePersonaTraits_English_LanguageData.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +91,8 @@ Global
 		{328CAEB0-5706-4B15-BB08-1DE0E9F1A3B5} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
 		{4E9DF21E-8C0E-446C-913B-92CA8B9D8C66} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
 		{CB575E1C-7F07-432E-BB4E-C76FB42C0846} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
+		{0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA} = {3C2F129A-4255-4F19-8721-29D1AA232B72}
+		{53F20ED6-C314-4606-B618-184032B1C992} = {0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ABB0903-25CF-4392-B02A-412441309701}
