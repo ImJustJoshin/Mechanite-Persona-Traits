@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using HarmonyLib;
 using MorePersonaTraits.Extensions;
@@ -14,7 +15,6 @@ namespace MechanitePersonaTraits.Patches
     [HarmonyPatch(typeof(Def), "SpecialDisplayStats")]
     public static class MechanitePatchWeaponTraitDefSpecialDisplayStats
     {
-        [HarmonyPostfix]
         static IEnumerable<StatDrawEntry> Postfix(IEnumerable<StatDrawEntry> values, Def __instance)
         {
             var statEntries = new List<StatDrawEntry>();
@@ -113,7 +113,6 @@ namespace MechanitePersonaTraits.Patches
                     return "";
             }
         }
-
         private static string workerLabel(OnHitWorker worker)
         {
             switch (worker)
@@ -143,7 +142,7 @@ namespace MechanitePersonaTraits.Patches
             Log.Message("Static Mechanite Persona Traits Mod Class Loaded");
 
             Harmony harmony = new Harmony("rimworld.mod.ImJustJoshin.MechanitePersonaTraits");
-            harmony.PatchAll();
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 }
