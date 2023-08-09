@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Collections.Generic;
 using HarmonyLib;
 using MorePersonaTraits.Extensions;
@@ -15,6 +14,7 @@ namespace MechanitePersonaTraits.Patches
     [HarmonyPatch(typeof(Def), "SpecialDisplayStats")]
     public static class MechanitePatchWeaponTraitDefSpecialDisplayStats
     {
+        //Nothing was touched here.
         static IEnumerable<StatDrawEntry> Postfix(IEnumerable<StatDrawEntry> values, Def __instance)
         {
             var statEntries = new List<StatDrawEntry>();
@@ -75,8 +75,8 @@ namespace MechanitePersonaTraits.Patches
         }
         private static TaggedString ReportText(OnHitWorker worker)
         {
-            //Switch case to detect ApplyMechanite.
-            //If not then defaults to original Arquebus code.
+            //Newly added Switch case to detect ApplyMechanite.
+            //If not then default to original Arquebus code.
             switch (worker)
             {
                 case OnHitWorker_ApplyMechanite onHit:
@@ -99,6 +99,7 @@ namespace MechanitePersonaTraits.Patches
         }
         private static string workerEffect(OnHitWorker worker)
         {
+            //Added one new case for ApplyMechanite
             switch (worker)
             {
                 case OnHitWorker_ApplyMechanite onHit:
@@ -117,6 +118,7 @@ namespace MechanitePersonaTraits.Patches
         }
         private static string workerLabel(OnHitWorker worker)
         {
+            //Added one new case for ApplyMechanite
             switch (worker)
             {
                 case OnHitWorker_ApplyMechanite onHit:
@@ -144,7 +146,7 @@ namespace MechanitePersonaTraits.Patches
             Log.Message("Static Mechanite Persona Traits Mod Class Loaded");
 
             Harmony harmony = new Harmony("rimworld.mod.ImJustJoshin.MechanitePersonaTraits");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            harmony.PatchAll();
         }
     }
 }
