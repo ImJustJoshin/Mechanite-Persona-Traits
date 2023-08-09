@@ -8,10 +8,10 @@ namespace MechanitePersonaTraits.HediffClasses
     {
         private readonly NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
 
-        private readonly float burstingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().burstingFallSetting;
-        private readonly float overflowingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().overflowingFallSetting;
-        private readonly float swellingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().swellingFallSetting;
-        private readonly float normalFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().normalFallSetting;
+        private readonly float burstingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().burstingFallSetting;
+        private readonly float overflowingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().overflowingFallSetting;
+        private readonly float swellingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().swellingFallSetting;
+        private readonly float normalFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().normalFallSetting;
 
         public void PlagueLustTick()
         {

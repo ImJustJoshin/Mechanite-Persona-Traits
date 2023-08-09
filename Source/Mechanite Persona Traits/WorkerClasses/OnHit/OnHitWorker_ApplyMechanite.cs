@@ -1,15 +1,18 @@
-﻿using System;
-using RimWorld;
+﻿using RimWorld;
 using MP_MechanitePlague;
 using MorePersonaTraits.WorkerClasses.OnHitWorkerClasses;
 using Verse;
 
 namespace MechanitePersonaTraits.OnHitWorkerClasses
 {
-    //Modified ApplyHediff from More Persona Traits by Arquebus
+    //ApplyHediff from More Persona Traits by Arquebus. Modified by ImJustJoshin.
     public class OnHitWorker_ApplyMechanite : OnHitWorker
     {
-        //Additional variables added by me.
+        //Didn't want this in the XML as it could confuse people as to
+        //how the Mechanite Plague is applied to a pawn.
+        //public HediffDef HediffDef = null;
+
+        //New Varibles for my purposes >:)
         public int MechaniteLevel = 0;
         public float minInfectionSeverity = 0f;
         public float maxInfectionSeverity = 0f;
@@ -60,8 +63,8 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
             Hediff mechaniteCapacity = pawn?.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
 
-            float mechaniteRecovery = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().mechaniteRecovery;
-            float plaguelustRecovery = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaSettings>().plaguelustRecovery;
+            float mechaniteRecovery = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().mechaniteRecovery;
+            float plaguelustRecovery = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().plaguelustRecovery;
 
             //Player Shenanigans could set Mechanite Infector or give any other trait ApplyMechanite and set it Level 2
             //Check prevents script from doing anything unless passed.
