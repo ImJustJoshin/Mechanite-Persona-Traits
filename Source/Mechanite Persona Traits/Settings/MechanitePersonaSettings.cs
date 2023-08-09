@@ -4,7 +4,7 @@ using Verse;
 
 namespace MechanitePersonaTraits
 {
-    public class MechanitePersonaSettings : ModSettings
+    public class MechanitePersonaTraitsSettings : ModSettings
     {
         public float burstingFallSetting, burstingFallDefault = 6.5f;
         public float overflowingFallSetting, overflowingFallDefault = 2.5f;
@@ -52,7 +52,7 @@ namespace MechanitePersonaTraits
             Text.Font = GameFont.Small;
 
             //Bursting - Stage 4 -  Highest Limit
-            listingStandard.Label("Mechanite Capacity (Bursting): " + decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", + - 1f, "Highest limit of Mechanite Capacity (Severity >= 0.90). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("Mechanite Capacity (Bursting): " + decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", +-1f, "Highest limit of Mechanite Capacity (Severity >= 0.90). How fast should Plaguelust fall per day once this threshold is reached?");
             burstingFallSetting = listingStandard.Slider(burstingFallSetting, 0.1f, 10f);
 
             //Overflowing - Stage 3 - High
@@ -100,7 +100,7 @@ namespace MechanitePersonaTraits
             listingStandard.CheckboxLabeled("Enable/Disable - " + "Positive".Colorize(Color.green) + " weapon trait: Mechanite Infector.        Default: " + "Enabled".Colorize(Color.green), ref infectorTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Infector, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
             listingStandard.CheckboxLabeled("Enable/Disable - " + "Negative".Colorize(Color.red) + " weapon trait: Mechanite Injector.      Default: " + "Enabled".Colorize(Color.green), ref injectorTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Injector, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
             listingStandard.CheckboxLabeled("Enable/Disable - " + "Positive...?".Colorize(Color.yellow) + " weapon trait: Mechanite Infester.   Default: " + "Enabled".Colorize(Color.green), ref infesterTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Infester, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
-            
+
             //Can't set commonality to zero because hardcoded to be > 0.
             //However, ensuring next to impossible chances is basically the same thing.
             if (infectorTraitSpawn == false)
@@ -145,23 +145,22 @@ namespace MechanitePersonaTraits
             listingStandard.End();
         }
     }
-
     //Load settings in-game :)
     public class MechanitePersonaTraits : Mod
     {
         //A reference to settings above.
-        public static MechanitePersonaSettings settings;
+        public static MechanitePersonaTraitsSettings settings;
 
         //Resolves the refernce to the settings above.
         public MechanitePersonaTraits(ModContentPack content) : base(content)
         {
-            MechanitePersonaTraits.settings = GetSettings<MechanitePersonaSettings>();
+            settings = GetSettings<MechanitePersonaTraitsSettings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
             base.DoSettingsWindowContents(inRect);
-            MechanitePersonaTraits.settings.DoSettingsWindowContents(inRect);
+            settings.DoSettingsWindowContents(inRect);
         }
 
         public override string SettingsCategory()
