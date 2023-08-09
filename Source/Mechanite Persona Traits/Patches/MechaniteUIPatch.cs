@@ -75,6 +75,8 @@ namespace MechanitePersonaTraits.Patches
         }
         private static TaggedString ReportText(OnHitWorker worker)
         {
+            //Switch case to detect ApplyMechanite.
+            //If not then defaults to original Arquebus code.
             switch (worker)
             {
                 case OnHitWorker_ApplyMechanite onHit:
@@ -84,7 +86,7 @@ namespace MechanitePersonaTraits.Patches
                     worker.TargetSelf ? "MPT_TargetSelf".Translate() : "MPT_TargetTarget".Translate(),
                     Math.Abs(onHit.minInfectionSeverity) > 0f ? "MPT_MinSeverityDesc".Translate((onHit.minInfectionSeverity * 100).ToString()) : TaggedString.Empty,
                     Math.Abs(onHit.maxInfectionSeverity) > 0f ? "MPT_MaxSeverityDesc".Translate(onHit.maxInfectionSeverity.ToStringPercent()) : TaggedString.Empty,
-                    onHit.extraSpawns > 0 ? "MPT_ExtraSpawnDesc".Translate(onHit.extraSpawns.ToString()) : TaggedString.Empty
+                    onHit.extraSpawns > 0 ? "\n\n" + "MPT_ExtraSpawnDesc".Translate(onHit.extraSpawns.ToString()) : TaggedString.Empty
                     );
                 default:
                     return "MPT_OnHitDesc".Translate(
