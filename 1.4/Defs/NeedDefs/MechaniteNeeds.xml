@@ -6,9 +6,9 @@ At the moment, I hope it does the following:
 - Add a new addiction to the game acquired only through a persona bond called Plaguelust.
 
 New Additions:
-MPT_Bonded_MechanitePlagueLich: The gift of the corrupted persona core! Powerful boosts but if the pawn fails to infect... they'll have a Manhunter mental break
+MPT_Bonded_MechaniteFactory: The gift of the corrupted persona core! Powerful boosts but if the pawn fails to infect... they'll have a Manhunter mental break
 so your pawn will ONLY attack humanoids or mechanoids instead of the Berserk mental break that luciferium gives which attacks is whatever happens to be closest to them.
-MPT_Need_MechanitePlagueLich: The actual addiction part of the bond.
+MPT_Need_MechaniteFactory: The actual addiction part of the bond.
 
 EXPERIMENTAL: There's still a lot I want to do with this and a lot I want to test. However, I am not a guy who knows BALANCE so if you think there's
 something I can change here that will provide a decently powerful buff balanced by a heavy downside I am ALL for it. This was kinda of thrown
@@ -18,10 +18,10 @@ together the moment it got into my head, "Hey I should make a THIRD trait thats 
 <Defs>
 	<!-- The Mechanite Plague Lich Addiction -->
 	<NeedDef ParentName="DrugAddictionNeedBase">
-		<defName>MPT_Need_MechanitePlagueLich</defName>
+		<defName>MPT_Need_MechaniteFactory</defName>
 		<needClass>Need_Chemical</needClass>
 		<label>Plaguelust</label>
-		<description>This person yearns to infect others with the Mechanite Plague that's rampant within themselves.\n\nIf they are not regularly spreading the Mechanite Plague, the screaming voices of their bonded persona weapon will overload their bondmate's mind with mechanites to incite an uncontrollable rage.\n\nOverloading will provide even greater bonuses, tuned for combat, to ensure they infect someone during their rampage.</description>
+		<description>This pawn yearns to infect others with the Mechanites that run rampant within themselves.\n\nIf they are not regularly spreading the Mechanite plague, the screaming voices of their bonded persona will overload their bondmate's mind with mechanites to incite an uncontrollable rage.\n\nOverloading will provide even greater bonuses, tuned for combat, to ensure they infect someone during their rampage even if they happen to be allies.</description>
 		<listPriority>45</listPriority>
 		<baseLevel>0.50</baseLevel>
 		<fallPerDay>0</fallPerDay> <!-- Dynamically changed based on MPT_MechaniteCapacity severity -->
@@ -30,25 +30,16 @@ together the moment it got into my head, "Hey I should make a THIRD trait thats 
 	
 	<!-- Add scary bond addiction with BIG benefits and BIG downsides... -->
 	<HediffDef>
-		<defName>MPT_Bonded_MechanitePlagueLich</defName>
+		<defName>MPT_Bonded_MechaniteFactory</defName>
 		<hediffClass>Hediff_Addiction</hediffClass>
-		<label>Mechanite Plague Lich</label>
-		<description>The bonded weapon persona has infested their bondmate's body with the Mechanite Plague. However, the plague is not harvesting the bodies resources to create bursters...
-
-Turns out the corrupted persona core is using their bondmate's body as a cauldron to create a modified version of the Mechanite Plague. This has the added benefits of making their bondmate immune to the Mechanite Plague along with giving the bondmate enhanced capabilities while their weapon persona utilizes more efficient mechanites for the Mechanite Plague.</description>
+		<label>Internal Mechanite Gestation</label>
+		<description>The bonded weapon persona has infested their bondmate's body with the Mechanite Plague. However, the mechanites are not harvesting the bodies resources to create bursters...\n\nTurns out the corrupted persona core is using their bondmate's body as a cauldron to gestate a modified version of the Mechanite plague. This has the added benefits of making their bondmate immune to the Mechanite plague along with giving the bondmate enhanced capabilities while their weapon persona utilizes more efficient mechanites for the Mechanite plague.</description>
 		<defaultLabelColor>(0.1,0.7,0.3)</defaultLabelColor>
 		<scenarioCanAdd>false</scenarioCanAdd>
 		<maxSeverity>1.0</maxSeverity>
-		<causesNeed>MPT_Need_MechanitePlagueLich</causesNeed>
+		<causesNeed>MPT_Need_MechaniteFactory</causesNeed>
 		<preventsPregnancy>true</preventsPregnancy>
 		<isBad>false</isBad>
-		<comps>
-			<li Class="MP_MechanitePlague.HediffCompProperties_MechPlagueSpawnFromCorpse">
-				<thingSpawned>MP_Mech_Burster</thingSpawned>
-				<bonusSpawnCount>1</bonusSpawnCount>
-				<forcePlayerFaction>true</forcePlayerFaction>
-			</li>
-		</comps>
 		<stages>
 			<li>
 				<makeImmuneTo>
@@ -87,7 +78,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 				<hediffGivers>
 					<li Class="HediffGiver_Random">
 						<hediff>MPT_Hediff_Overload</hediff>
-						<mtbDays>0.05</mtbDays>
+						<mtbDays>0.03</mtbDays>
 					</li>
 				</hediffGivers>
 				<capMods>
@@ -120,7 +111,7 @@ Turns out the corrupted persona core is using their bondmate's body as a cauldro
 		<defName>MPT_Hediff_Overload</defName>
 		<label>Overload Boost</label>
 		<hediffClass>Hediff_High</hediffClass>
-		<description>The bondmate has failed to spread the Mechanite Plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.</description>
+		<description>The bondmate has failed to spread the Mechanite plague to satisfy the combined plaguelust for both themselves and their persona weapon.\n\nAs a result, the bonded persona weapon has decided to intervene and flood not only the mind but also the body of it's bondmate to induce a plague-fueled rampage.\n\nIn the event that the pawn should die in this state, 3 friendly Bursters will spawn.</description>
 		<defaultLabelColor>(0.8,0.0,0.2)</defaultLabelColor>
 		<makesAlert>false</makesAlert>
 		<maxSeverity>1.0</maxSeverity>

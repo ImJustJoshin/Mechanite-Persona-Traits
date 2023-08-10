@@ -99,11 +99,11 @@ So please, if you see values that are a little strange then shoot me a balance p
 	<WeaponTraitDef>
         <defName>MPT_Unique_MechaniteInfester</defName>
         <label>mechanite infester</label>
-        <description>This weapon's persona is unstable due to mechanite infestation... It may be for the best if a Persona Reformat Effector is used here or at least throw this persona weapon away into the deepest hole you can find...\n\nThe moment this persona weapon bonds with another, their mind and bodies will be altered by the mechanite infestation and forced into spreading the mechanite plague whenever and wherever they can. Failure to do so WILL result in a plague-fueled rampage.</description>
+        <description>The moment this persona weapon bonds with another, their mind and bodies will be altered by the mechanite infestation and forced into spreading the Mechanite plague wherever and whenever they can. Failure to do so WILL result in a plague-fueled rampage.\n\nIt may be for the best if a Persona Reformat Effector is used here...</description>
         <commonality>0.2</commonality>
         <marketValueOffset>-200</marketValueOffset>
 		<bondedHediffs>
-            <li>MPT_Bonded_MechanitePlagueLich</li>
+            <li>MPT_Bonded_MechaniteFactory</li>
 			<li>MPT_MechaniteCapacity</li>
         </bondedHediffs>
 		<bondedThought>MPT_Thought_Plaguelust</bondedThought>
