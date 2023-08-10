@@ -150,6 +150,3 @@ namespace MechanitePersonaTraits.Patches
         }
     }
 }
-
-
-
