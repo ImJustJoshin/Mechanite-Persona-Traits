@@ -12,6 +12,11 @@
         <li>1.4</li>
     </supportedVersions>
     <modDependencies>
+		<li>
+            <displayName>Harmony</displayName>
+            <packageId>brrainz.harmony</packageId>
+            <steamWorkshopUrl>steam://https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+        </li>
         <li>
             <displayName>Mechanite Plague</displayName>
             <packageId>Chairheir.MechanitePlague</packageId>
@@ -24,6 +29,7 @@
         </li>
     </modDependencies>
     <loadAfter>
+		<li>brrainz.harmony</li>
         <li>Chairheir.MechanitePlague</li>
         <li>Arquebus.MorePersonaTraits</li>
     </loadAfter>

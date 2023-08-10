@@ -6,7 +6,7 @@ namespace MechanitePersonaTraits.HediffClasses
     //The Big One!
     class Hediff_MechaniteCapacity : Hediff_High
     {
-        private readonly NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
+        private readonly NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechaniteFactory");
 
         private readonly float burstingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().burstingFallSetting;
         private readonly float overflowingFall = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().overflowingFallSetting;
