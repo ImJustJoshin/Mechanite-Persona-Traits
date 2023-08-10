@@ -20,8 +20,24 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
 
         public override void OnHitEffect(Thing hitThing, Thing originThing)
         {
+            //Checks target and Mod Settings to Deterime:
+            //if target is humanlike
+            //if target is an insect AND player allowed insects to spawn bursters in Mechanite Plague Settings
+            //if target is an animal AND player allowed animals to spawn bursters in Mechanite Plague Settings
+            //Should it fail to find any of these, PurgeMechanites will not fire.
+            //Target will still receive the Mechanite Plague, it just won't soothe those urges...
+            //Also there is a check done by More Persona Traits to deterime if both hitThing and originThing is alive AND Biological
+            //So dead pawns or humanlike non-biological pawns don't count from that check alone.
+
+            bool targetAndSettingsCheck = (hitThing as Pawn).RaceProps.Humanlike || 
+                ((hitThing as Pawn).RaceProps.Insect && LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowInsectSpawns) ||
+                ((hitThing as Pawn).RaceProps.Animal && LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns);
+
             ApplyOnHitEffect(hitThing, originThing, ApplyMechanites);
-            PurgeMechanites(originThing as Pawn, MechaniteLevel);
+            if (targetAndSettingsCheck)
+            {
+                PurgeMechanites(originThing as Pawn, MechaniteLevel);
+            }
         }
 
         void ApplyMechanites(Thing infectedThing)
@@ -55,12 +71,9 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
 
         private static void PurgeMechanites(Pawn pawn, int level)
         {
-            //Reduce Mechanite Capacity and increase need Plaguelust if origin pawn is a Mechanite Plague Lich
-            //With this being a WeaponTrait onHitWorker now instead of two hediffClasses that I made liches
-            //are now truly seperate from each other and you may now have an infinite amount of liches!
-            //Question: Why would you do that though? You monster.
+            //Reduce Mechanite Capacity and increase need Plaguelust if origin pawn has Internal Mechanite Gestation
 
-            NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
+            NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechaniteFactory");
             Hediff mechaniteCapacity = pawn?.health?.hediffSet?.GetFirstHediffOfDef(HediffDef.Named("MPT_MechaniteCapacity"));
 
             float mechaniteRecovery = LoadedModManager.GetMod<MechanitePersonaTraits>().GetSettings<MechanitePersonaTraitsSettings>().mechaniteRecovery;
