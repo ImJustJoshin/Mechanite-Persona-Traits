@@ -26,7 +26,7 @@ namespace MechanitePersonaTraits
             Scribe_Values.Look(ref normalFallSetting, "MPT_MechaniteCapacity.Normal", 0.35f);
 
             Scribe_Values.Look(ref mechaniteRecovery, "MPT_MechaniteCapacity.Recovery", 0.048f);
-            Scribe_Values.Look(ref plaguelustRecovery, "MPT_Need_MechanitePlagueLich.Recovery", 0.085f);
+            Scribe_Values.Look(ref plaguelustRecovery, "MPT_Need_MechaniteFactory.Recovery", 0.085f);
 
             Scribe_Values.Look(ref infectorTraitSpawn, "MPT_OnHit_Mechanite", true);
             Scribe_Values.Look(ref injectorTraitSpawn, "MPT_OnHit_MechaniteSelf", true);
@@ -84,7 +84,7 @@ namespace MechanitePersonaTraits
             listingStandard.Label("Mechanite Capacity recovery: -" + decimal.Round((decimal)mechaniteRecovery * 100, 2).ToString() + "% severity", -1f, "After successfully infecting a target with the Mechanite Plague, Mechanite Capacity severity is reduced.\n\nThis number determines how much Mechanite Capacity will be reduced by.");
             mechaniteRecovery = listingStandard.Slider(mechaniteRecovery, 0.025f, 0.100f);
 
-            listingStandard.Label("Plaguelust recovery: " + decimal.Round((decimal)plaguelustRecovery * 100, 2).ToString() + "%", -1f, "After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges of a Mechanite Plague Lich.\n\nThis number determines how much Plaguelust will be increased by.");
+            listingStandard.Label("Plaguelust recovery: " + plaguelustRecovery.ToStringPercent(), -1f, "After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges for pawns bonded to a Mechanite Infester persona weapon.\n\nThis number determines how much Plaguelust will be increased by.");
             plaguelustRecovery = listingStandard.Slider(plaguelustRecovery, 0.025f, 0.100f);
 
             //----Recovery Settings End

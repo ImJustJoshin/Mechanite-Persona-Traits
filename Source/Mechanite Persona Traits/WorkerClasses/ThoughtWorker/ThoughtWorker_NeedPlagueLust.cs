@@ -7,7 +7,7 @@ namespace MechanitePersonaTraits.ThoughtWorkerClasses
     public class ThoughtWorker_NeedPlagueLust : ThoughtWorker_WeaponTrait
     {
         //Define NeedDef for Plaguelust
-        public NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechanitePlagueLich");
+        public NeedDef plaguelust = DefDatabase<NeedDef>.GetNamed("MPT_Need_MechaniteFactory");
 
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
