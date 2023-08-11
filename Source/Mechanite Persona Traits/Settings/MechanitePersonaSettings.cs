@@ -1,4 +1,4 @@
-﻿using RimWorld;
+﻿using MP_MechanitePlague;
 using UnityEngine;
 using Verse;
 
@@ -14,7 +14,8 @@ namespace MechanitePersonaTraits
         public float mechaniteRecovery, mechaniteDefault = 0.048f;
         public float plaguelustRecovery, plaguelustDefault = 0.085f;
 
-        public bool infectorTraitSpawn, injectorTraitSpawn, infesterTraitSpawn = true;
+        readonly bool mechaniteModSettingInsect = LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowInsectSpawns;
+        readonly bool mechaniteModSettingAnimal = LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns;
 
         public bool defaultSettings = false;
 
@@ -27,11 +28,7 @@ namespace MechanitePersonaTraits
 
             Scribe_Values.Look(ref mechaniteRecovery, "MPT_MechaniteCapacity.Recovery", 0.048f);
             Scribe_Values.Look(ref plaguelustRecovery, "MPT_Need_MechaniteFactory.Recovery", 0.085f);
-
-            Scribe_Values.Look(ref infectorTraitSpawn, "MPT_OnHit_Mechanite", true);
-            Scribe_Values.Look(ref injectorTraitSpawn, "MPT_OnHit_MechaniteSelf", true);
-            Scribe_Values.Look(ref infesterTraitSpawn, "MPT_Unique_MechaniteInfester", true);
-
+            
             base.ExposeData();
         }
 
@@ -42,29 +39,29 @@ namespace MechanitePersonaTraits
             listingStandard.Begin(inRect);
 
             //----Notice Start
-
             Text.Font = GameFont.Medium;
             listingStandard.Label("SETTINGS REQUIRE RESTART TO TAKE EFFECT!".Colorize(Color.yellow), -1f, null);
+            listingStandard.Label("Hover over labels for additional information.".Colorize(Color.yellow), -1f, "Hey look! A Tooltip!");
+            listingStandard.Gap();
 
             //----Mechanite Capacity Thresholds Start
-            listingStandard.Gap();
-            listingStandard.Label("Mechanite Capacity Thresholds", -1, "Settings below determine how Mechanite Capacity works on a Plague Lich once certain thresholds are reached.");
+            listingStandard.Label("Mechanite Capacity Thresholds", -1, "Settings below determine how Mechanite Capacity works once certain thresholds are reached.");
             Text.Font = GameFont.Small;
 
             //Bursting - Stage 4 -  Highest Limit
-            listingStandard.Label("Mechanite Capacity (Bursting): " + decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", +-1f, "Highest limit of Mechanite Capacity (Severity >= 0.90). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("Mechanite Capacity (Bursting): " + decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", +-1f, "Highest limit of Mechanite Capacity (Severity >= " + ("0.90").Colorize(Color.black) + "). How fast should Plaguelust fall per day once this threshold is reached?");
             burstingFallSetting = listingStandard.Slider(burstingFallSetting, 0.1f, 10f);
 
             //Overflowing - Stage 3 - High
-            listingStandard.Label("Mechanite Capacity (Overflowing): " + decimal.Round((decimal)overflowingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "High limit of Mechanite Capacity (Severity >= 0.75). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("Mechanite Capacity (Overflowing): " + decimal.Round((decimal)overflowingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "High limit of Mechanite Capacity (Severity >= " + ("0.75").Colorize(Color.grey) + "). How fast should Plaguelust fall per day once this threshold is reached?");
             overflowingFallSetting = listingStandard.Slider(overflowingFallSetting, 0.1f, 10f);
 
             //Swelling - Stage 2 - Medium
-            listingStandard.Label("Mechanite Capacity (Swelling): " + decimal.Round((decimal)swellingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Medium limit of Mechanite Capacity (Severity >= 0.50). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("Mechanite Capacity (Swelling): " + decimal.Round((decimal)swellingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Medium limit of Mechanite Capacity (Severity >= " + ("0.50").Colorize(Color.yellow) + "). How fast should Plaguelust fall per day once this threshold is reached?");
             swellingFallSetting = listingStandard.Slider(swellingFallSetting, 0.1f, 10f);
 
             //Normal - Stage 1 - Low
-            listingStandard.Label("Mechanite Capacity (Normal): " + decimal.Round((decimal)normalFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Low limit of Mechanite Capacity (Severity >= 0.25). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("Mechanite Capacity (Normal): " + decimal.Round((decimal)normalFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Low limit of Mechanite Capacity (Severity >= " + ("0.25").Colorize(Color.green) + "). How fast should Plaguelust fall per day once this threshold is reached?");
             normalFallSetting = listingStandard.Slider(normalFallSetting, 0.1f, 10f);
 
             //Diminished and Depleted - Stage 0 - Nothing
@@ -81,47 +78,21 @@ namespace MechanitePersonaTraits
             listingStandard.Label("Recovery Settings", -1, "Settings below determine the recovery rates for the trait, Mechanite Infester.");
             Text.Font = GameFont.Small;
 
-            listingStandard.Label("Mechanite Capacity recovery: -" + decimal.Round((decimal)mechaniteRecovery * 100, 2).ToString() + "% severity", -1f, "After successfully infecting a target with the Mechanite Plague, Mechanite Capacity severity is reduced.\n\nThis number determines how much Mechanite Capacity will be reduced by.");
+            listingStandard.Label("Mechanite Capacity recovery: -" + mechaniteRecovery.ToStringPercent() + " severity", -1f, "After successfully infecting a target with the Mechanite Plague, Mechanite Capacity severity is reduced.\n\nThis number determines how much Mechanite Capacity will be reduced by.");
             mechaniteRecovery = listingStandard.Slider(mechaniteRecovery, 0.025f, 0.100f);
 
             listingStandard.Label("Plaguelust recovery: " + plaguelustRecovery.ToStringPercent(), -1f, "After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges for pawns bonded to a Mechanite Infester persona weapon.\n\nThis number determines how much Plaguelust will be increased by.");
             plaguelustRecovery = listingStandard.Slider(plaguelustRecovery, 0.025f, 0.100f);
 
-            //----Recovery Settings End
-
-            //----Other Settings Start
             listingStandard.Gap();
-
             Text.Font = GameFont.Medium;
-            listingStandard.Label("Other Settings", -1, "Settings below are other, more miscellaneous changes for this mod.");
+            listingStandard.Label("Trait spawn settings are now handled by More Persona Traits - Trait Spawn mod settings!", -1, "THIS WILL NOT REMOVE THE TRAIT FROM THE GAME. ONLY PREVENT THEM FROM BEING ROLLED.\n\nIn the time I was gone, Arquebus made a whole thing for it. So just use that instead please!");
+            listingStandard.Label("Mechanite Infester requires humanlike targets to purge mechanites! - Hover for more info!".Colorize(Color.yellow), -1, "Mechanite Purge is needed for Plaguelust recovery and Mechanite recovery to take effect when using the Mechanite Infester persona trait.\n\nThis behavior can be altered inside " + ("The Mechanite Plague").Colorize(Color.green) + " mod settings by changing allowed spawns for insects and animals.\n\nDoing so will make Mechanite Infester work normally even against non-humanlike pawns. However, settings may still need a restart to take effect.");
             Text.Font = GameFont.Small;
 
-            //Trait Spawn Checks
-            listingStandard.CheckboxLabeled("Enable/Disable - " + "Positive".Colorize(Color.green) + " weapon trait: Mechanite Infector.        Default: " + "Enabled".Colorize(Color.green), ref infectorTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Infector, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
-            listingStandard.CheckboxLabeled("Enable/Disable - " + "Negative".Colorize(Color.red) + " weapon trait: Mechanite Injector.      Default: " + "Enabled".Colorize(Color.green), ref injectorTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Injector, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
-            listingStandard.CheckboxLabeled("Enable/Disable - " + "Positive...?".Colorize(Color.yellow) + " weapon trait: Mechanite Infester.   Default: " + "Enabled".Colorize(Color.green), ref infesterTraitSpawn, "This setting, if disabled, will prevent the weapon trait, Mechanite Infester, from spawning. This does not remove this trait from any existing weapons to prevent errors.", 0f, 0.58f);
+            //----Recovery Settings End
 
-            //Can't set commonality to zero because hardcoded to be > 0.
-            //However, ensuring next to impossible chances is basically the same thing.
-            if (infectorTraitSpawn == false)
-            {
-                WeaponTraitDef mechaniteInfector = DefDatabase<WeaponTraitDef>.GetNamed("MPT_OnHit_Mechanite");
-                mechaniteInfector.commonality = 0.0000001f;
-            }
-
-            if (injectorTraitSpawn == false)
-            {
-                WeaponTraitDef mechaniteInjector = DefDatabase<WeaponTraitDef>.GetNamed("MPT_OnHit_MechaniteSelf");
-                mechaniteInjector.commonality = 0.0000001f;
-            }
-
-            if (infesterTraitSpawn == false)
-            {
-                WeaponTraitDef mechaniteInfester = DefDatabase<WeaponTraitDef>.GetNamed("MPT_Unique_MechaniteInfester");
-                mechaniteInfester.commonality = 0.0000001f;
-            }
-
-            defaultSettings = listingStandard.ButtonText("Reset settings", null, 0.2f);
+            defaultSettings = listingStandard.ButtonText("Reset settings", "All settings will revert to default values", 0.2f);
             if (defaultSettings == true)
             {
                 burstingFallSetting = listingStandard.Slider(burstingFallDefault, 0.1f, 10f);
@@ -131,10 +102,6 @@ namespace MechanitePersonaTraits
 
                 mechaniteRecovery = listingStandard.Slider(mechaniteDefault, 0.025f, 0.100f);
                 plaguelustRecovery = listingStandard.Slider(plaguelustDefault, 0.025f, 0.100f);
-
-                infectorTraitSpawn = true;
-                injectorTraitSpawn = true;
-                infesterTraitSpawn = true;
 
                 defaultSettings = false;
             }
