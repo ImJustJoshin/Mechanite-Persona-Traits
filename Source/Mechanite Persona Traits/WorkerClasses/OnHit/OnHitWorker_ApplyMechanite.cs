@@ -21,17 +21,18 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
         public override void OnHitEffect(Thing hitThing, Thing originThing)
         {
             //Checks target and Mod Settings to Deterime:
-            //if target is humanlike
+            //if target is humanlike OR
             //if target is an insect AND player allowed insects to spawn bursters in Mechanite Plague Settings
-            //if target is an animal AND player allowed animals to spawn bursters in Mechanite Plague Settings
+            //if allowed animals to spawn bursters in Mechanite Plague Settings (if this setting is on all animals including insects will spawn bursters)
+            //So insect check becomes irrelevant even if it fails.
             //Should it fail to find any of these, PurgeMechanites will not fire.
-            //Target will still receive the Mechanite Plague, it just won't soothe those urges...
+            //Target will still receive the Mechanite Plague, it just won't soothe those urges... Find actual targets not wild creatures >:(
             //Also there is a check done by More Persona Traits to deterime if both hitThing and originThing is alive AND Biological
-            //So dead pawns or humanlike non-biological pawns don't count from that check alone.
+            //So dead pawns or humanlike non-biological pawns won't even get to my checks below as the function immediately returns.
 
             bool targetAndSettingsCheck = (hitThing as Pawn).RaceProps.Humanlike || 
                 ((hitThing as Pawn).RaceProps.Insect && LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowInsectSpawns) ||
-                ((hitThing as Pawn).RaceProps.Animal && LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns);
+                LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns;
 
             ApplyOnHitEffect(hitThing, originThing, ApplyMechanites);
             if (targetAndSettingsCheck)
