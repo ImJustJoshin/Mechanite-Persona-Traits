@@ -72,7 +72,7 @@ So please, if you see values that are a little strange then shoot me a balance p
         <label>mechanite injector</label>
         <description>This weapon's persona, in awe of the mechanoid hives creativity, decided to spread their "gift" to their bondmate. Upon hitting a target, there is a small chance that the user will contract the mechanite plague.\n\nNOTE: Dying with the mechanite plague caused by the persona's love for the mechanoid hives will result in HOSTILE bursters being spawned.</description>
         <commonality>0.5</commonality>
-        <marketValueOffset>-1000</marketValueOffset>
+        <marketValueOffset>-600</marketValueOffset>
         <exclusionTags>
             <li>MPT_Bonded_ImmuneMechanite</li>
 			<li>MPT_Unique_MechaniteInfester</li>
@@ -101,7 +101,7 @@ So please, if you see values that are a little strange then shoot me a balance p
         <label>mechanite infester</label>
         <description>The moment this persona weapon bonds with another, their mind and bodies will be altered by the mechanite infestation and forced into spreading the Mechanite plague wherever and whenever they can. Failure to do so WILL result in a plague-fueled rampage.\n\nIt may be for the best if a Persona Reformat Effector is used here...</description>
         <commonality>0.2</commonality>
-        <marketValueOffset>-200</marketValueOffset>
+        <marketValueOffset>-600</marketValueOffset>
 		<bondedHediffs>
             <li>MPT_Bonded_MechaniteFactory</li>
 			<li>MPT_MechaniteCapacity</li>
