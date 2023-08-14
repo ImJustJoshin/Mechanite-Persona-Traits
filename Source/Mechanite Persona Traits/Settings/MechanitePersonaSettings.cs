@@ -1,5 +1,4 @@
-﻿using MP_MechanitePlague;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace MechanitePersonaTraits
@@ -13,9 +12,6 @@ namespace MechanitePersonaTraits
 
         public float mechaniteRecovery, mechaniteDefault = 0.048f;
         public float plaguelustRecovery, plaguelustDefault = 0.085f;
-
-        readonly bool mechaniteModSettingInsect = LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowInsectSpawns;
-        readonly bool mechaniteModSettingAnimal = LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns;
 
         public bool defaultSettings = false;
 
@@ -40,28 +36,29 @@ namespace MechanitePersonaTraits
 
             //----Notice Start
             Text.Font = GameFont.Medium;
-            listingStandard.Label("SETTINGS REQUIRE RESTART TO TAKE EFFECT!".Colorize(Color.yellow), -1f, null);
-            listingStandard.Label("Hover over labels for additional information.".Colorize(Color.yellow), -1f, "Hey look! A Tooltip!");
+            listingStandard.Label("MPT_SettingRestart".Translate().Colorize(Color.yellow), -1f, null);
+            listingStandard.Label("MPT_SettingNoticeTop".Translate().Colorize(Color.yellow), -1f, "MPT_SettingNoticeTopTooltip".Translate());
             listingStandard.Gap();
+            //----Notice End
 
             //----Mechanite Capacity Thresholds Start
-            listingStandard.Label("Mechanite Capacity Thresholds", -1, "Settings below determine how Mechanite Capacity works once certain thresholds are reached.");
+            listingStandard.Label("MPT_SettingThresholdLabel".Translate(), -1, "MPT_SettingThresholdLabelTooltip".Translate());
             Text.Font = GameFont.Small;
 
             //Bursting - Stage 4 -  Highest Limit
-            listingStandard.Label("Mechanite Capacity (Bursting): " + decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", +-1f, "Highest limit of Mechanite Capacity (Severity >= " + ("0.90").Colorize(Color.black) + "). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("MPT_SettingThresholdHighest".Translate(decimal.Round((decimal)burstingFallSetting, 2).ToString().Colorize(Color.green)), -1f, "MPT_SettingThresholdHighestTooltip".Translate((DefDatabase<HediffDef>.GetNamed("MPT_MechaniteCapacity").stages[5].minSeverity).ToString()));
             burstingFallSetting = listingStandard.Slider(burstingFallSetting, 0.1f, 10f);
 
             //Overflowing - Stage 3 - High
-            listingStandard.Label("Mechanite Capacity (Overflowing): " + decimal.Round((decimal)overflowingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "High limit of Mechanite Capacity (Severity >= " + ("0.75").Colorize(Color.grey) + "). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("MPT_SettingThresholdHigh".Translate(decimal.Round((decimal)overflowingFallSetting, 2).ToString().Colorize(Color.green)), -1f, "MPT_SettingThresholdHighTooltip".Translate((DefDatabase<HediffDef>.GetNamed("MPT_MechaniteCapacity").stages[4].minSeverity).ToString()));
             overflowingFallSetting = listingStandard.Slider(overflowingFallSetting, 0.1f, 10f);
 
             //Swelling - Stage 2 - Medium
-            listingStandard.Label("Mechanite Capacity (Swelling): " + decimal.Round((decimal)swellingFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Medium limit of Mechanite Capacity (Severity >= " + ("0.50").Colorize(Color.yellow) + "). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("MPT_SettingThresholdMedium".Translate(decimal.Round((decimal)swellingFallSetting, 2).ToString().Colorize(Color.green)), -1f, "MPT_SettingThresholdMediumTooltip".Translate((DefDatabase<HediffDef>.GetNamed("MPT_MechaniteCapacity").stages[3].minSeverity).ToString()));
             swellingFallSetting = listingStandard.Slider(swellingFallSetting, 0.1f, 10f);
 
             //Normal - Stage 1 - Low
-            listingStandard.Label("Mechanite Capacity (Normal): " + decimal.Round((decimal)normalFallSetting, 2).ToString().Colorize(Color.green) + " Fall per Day.", -1f, "Low limit of Mechanite Capacity (Severity >= " + ("0.25").Colorize(Color.green) + "). How fast should Plaguelust fall per day once this threshold is reached?");
+            listingStandard.Label("MPT_SettingThresholdLow".Translate(decimal.Round((decimal)normalFallSetting, 2).ToString().Colorize(Color.green)), -1f, "MPT_SettingThresholdLowTooltip".Translate((DefDatabase<HediffDef>.GetNamed("MPT_MechaniteCapacity").stages[2].minSeverity).ToString()));
             normalFallSetting = listingStandard.Slider(normalFallSetting, 0.1f, 10f);
 
             //Diminished and Depleted - Stage 0 - Nothing
@@ -75,24 +72,24 @@ namespace MechanitePersonaTraits
             listingStandard.Gap();
 
             Text.Font = GameFont.Medium;
-            listingStandard.Label("Recovery Settings", -1, "Settings below determine the recovery rates for the trait, Mechanite Infester.");
+            listingStandard.Label("MPT_SettingRecoveryLabel".Translate(), -1, "MPT_SettingRecoveryLabelTooltip".Translate());
             Text.Font = GameFont.Small;
 
-            listingStandard.Label("Mechanite Capacity recovery: -" + mechaniteRecovery.ToStringPercent() + " severity", -1f, "After successfully infecting a target with the Mechanite Plague, Mechanite Capacity severity is reduced.\n\nThis number determines how much Mechanite Capacity will be reduced by.");
+            listingStandard.Label("MPT_SettingRecoveryCapacity".Translate(mechaniteRecovery.ToStringPercent()), -1f, "MPT_SettingRecoveryCapacityTooltip".Translate());
             mechaniteRecovery = listingStandard.Slider(mechaniteRecovery, 0.025f, 0.100f);
 
-            listingStandard.Label("Plaguelust recovery: " + plaguelustRecovery.ToStringPercent(), -1f, "After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges for pawns bonded to a Mechanite Infester persona weapon.\n\nThis number determines how much Plaguelust will be increased by.");
+            listingStandard.Label("MPT_SettingRecoveryPlaguelust".Translate(plaguelustRecovery.ToStringPercent()), -1f, "MPT_SettingRecoveryPlaguelustTooltip".Translate());
             plaguelustRecovery = listingStandard.Slider(plaguelustRecovery, 0.025f, 0.100f);
 
             listingStandard.Gap();
             Text.Font = GameFont.Medium;
-            listingStandard.Label("Trait spawn settings are now handled by More Persona Traits - Trait Spawn mod settings!", -1, "THIS WILL NOT REMOVE THE TRAIT FROM THE GAME. ONLY PREVENT THEM FROM BEING ROLLED.\n\nIn the time I was gone, Arquebus made a whole thing for it. So just use that instead please!");
-            listingStandard.Label("Mechanite Infester requires humanlike targets to purge mechanites! - Hover for more info!".Colorize(Color.yellow), -1, "Mechanite Purge is needed for Plaguelust recovery and Mechanite recovery to take effect when using the Mechanite Infester persona trait.\n\nThis behavior can be altered inside " + ("The Mechanite Plague").Colorize(Color.green) + " mod settings by changing allowed spawns for insects and animals.\n\nDoing so will make Mechanite Infester work normally even against non-humanlike pawns. However, settings may still need a restart to take effect.");
+            listingStandard.Label("MPT_SettingNoticeBottom".Translate(), -1, "MPT_SettingNoticeBottomTooltip".Translate());
+            listingStandard.Label("MPT_SettingNoticeInfester".Translate().Colorize(Color.yellow), -1, "MPT_SettingNoticeInfesterTooltip".Translate("MPT_SettingNoticeHelper".Translate()));
             Text.Font = GameFont.Small;
 
             //----Recovery Settings End
 
-            defaultSettings = listingStandard.ButtonText("Reset settings", "All settings will revert to default values", 0.2f);
+            defaultSettings = listingStandard.ButtonText("MPT_SettingReset".Translate(), "MPT_SettingResetTooltip".Translate(), 0.2f);
             if (defaultSettings == true)
             {
                 burstingFallSetting = listingStandard.Slider(burstingFallDefault, 0.1f, 10f);
@@ -132,7 +129,7 @@ namespace MechanitePersonaTraits
 
         public override string SettingsCategory()
         {
-            return "Mechanite Persona Traits";
+            return "MPT_SettingCatagory".Translate();
         }
     }
 }
