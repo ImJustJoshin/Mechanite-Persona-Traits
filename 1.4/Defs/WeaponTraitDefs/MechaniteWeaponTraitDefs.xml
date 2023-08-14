@@ -121,7 +121,6 @@ So please, if you see values that are a little strange then shoot me a balance p
 			<li>MPT_OnHit_Mechanite</li>
 			<li>MPT_OnHit_MechaniteSelf</li>
 			<li>MPT_OnKill_NeedFilledChemical</li>
-			<li>MPT_Bonded_Addiction</li>
             <li>MPT_Bonded_ImmuneMechanite</li>
         </exclusionTags>
         <descriptionHyperlinks>

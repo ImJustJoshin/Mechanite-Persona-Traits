@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using HarmonyLib;
 using MorePersonaTraits.Patches;
 using MechanitePersonaTraits.OnHitWorkerClasses;

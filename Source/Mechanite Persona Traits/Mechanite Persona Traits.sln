@@ -65,6 +65,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keyed", "Keyed", "{53F20ED6
 		..\..\Languages\English\Keyed\MechanitePersonaTraits_English_LanguageData.xml = ..\..\Languages\English\Keyed\MechanitePersonaTraits_English_LanguageData.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThingDefs_Item", "ThingDefs_Item", "{EBA5DDF7-3F66-4813-9B0C-BCC406D9E54C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.4\Defs\ThingDefs_Item\MPT_Bladelink_MechaniteItems.xml = ..\..\1.4\Defs\ThingDefs_Item\MPT_Bladelink_MechaniteItems.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +97,7 @@ Global
 		{CB575E1C-7F07-432E-BB4E-C76FB42C0846} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
 		{0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA} = {3C2F129A-4255-4F19-8721-29D1AA232B72}
 		{53F20ED6-C314-4606-B618-184032B1C992} = {0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA}
+		{EBA5DDF7-3F66-4813-9B0C-BCC406D9E54C} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ABB0903-25CF-4392-B02A-412441309701}
