@@ -17,6 +17,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
         public float minInfectionSeverity = 0f;
         public float maxInfectionSeverity = 0f;
         public int extraSpawns = 0;
+        private Faction originPawn = null;
 
         public override void OnHitEffect(Thing hitThing, Thing originThing)
         {
@@ -34,6 +35,9 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
                 ((hitThing as Pawn).RaceProps.Insect && LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowInsectSpawns) ||
                 LoadedModManager.GetMod<MechPlague>().GetSettings<MechPlagueSettings>().allowAnimalSpawns;
 
+            //Acquire and carry originThing as Pawn to ApplyMechanites
+            originPawn = (originThing as Pawn).Faction;
+
             ApplyOnHitEffect(hitThing, originThing, ApplyMechanites);
             if (targetAndSettingsCheck)
             {
@@ -47,7 +51,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
             if (MechaniteLevel == 1)
             {
                 //Infect using XML defined variables. That's it.
-                PlagueMethodHolder.InfectPawn(infectedThing as Pawn, Faction.OfPlayer, minInfectionSeverity, maxInfectionSeverity, extraSpawns);
+                PlagueMethodHolder.InfectPawn(infectedThing as Pawn, originPawn, minInfectionSeverity, maxInfectionSeverity, extraSpawns);
             }
             
             //Mechanite Infester - Advanced
@@ -57,7 +61,7 @@ namespace MechanitePersonaTraits.OnHitWorkerClasses
                 DamageWorker.DamageResult damageResult = (infectedThing as Pawn).TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("MPT_Damage_MechaniteInfestation", true), 3f, 0.5f, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown, null, true, true));
                 if (damageResult.wounded)
                 {
-                    PlagueMethodHolder.InfectPawn(infectedThing as Pawn, Faction.OfPlayer, minInfectionSeverity, maxInfectionSeverity, extraSpawns);
+                    PlagueMethodHolder.InfectPawn(infectedThing as Pawn, originPawn, minInfectionSeverity, maxInfectionSeverity, extraSpawns);
                 }
             }
 
