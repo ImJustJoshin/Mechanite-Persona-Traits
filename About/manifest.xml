@@ -6,7 +6,7 @@
         assessing the largely subjective importance of an update.
         For multiple releases during the same day, append another digit: 3.27.2021.1
       -->
-    <version>8.14.2023</version>
+    <version>8.15.2023</version>
 
     <!-- These links wire up the new version available alert in Mod Manager -->
     <manifestUri>https://raw.githubusercontent.com/ImJustJoshin/Mechanite-Persona-Traits/master/About/manifest.xml</manifestUri>
