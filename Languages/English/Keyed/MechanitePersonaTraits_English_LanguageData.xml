@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+A LanguageData xml.
+At the moment, I hope it does the following:
+- Add Keyed Tags in my C++ code to call wherever I need them.
+
+Breakdown Version - Individual Parts here:
+
+MPT_MechaniteOnHitDesc -> Upon landing a hit, the persona weapon has a {0} chance to {1} {2}{3}~{4}.\n{5}
+{0} -> ProcChance -> X%
+{1} -> MPT_ApplyMechaniteDesc -> apply/increase the severity of the {0} to -> {0} -> MPT_HediffDef -> Mechanite plague
+{2} -> TargetSelf/!TargetSelf -> the wielder/the target
+{3}~{4} -> MPT_MinSeverityDesc + MPT_MaxSeverityDesc -> by X~X%
+\n\n -> 2x Line break in code
+{5} -> MPT_ExtraSpawnDesc -> Spawns {0} additional Burster(s) upon target's death. -> {0} -> extraSpawns
+
+Please see MechaniteWeaponTraitDefs to see variable information.
+Complete Version - What this will look like in-game (hopefully):
+
+Upon landing a hit, the persona weapon has a X% chance to apply/increase the severity of the Mechanite plague to the target by X~X%.
+
+Spawns X additional Burster(s) upon target's death.
+
+Hopefully that makes thing's clear if you attempt to localize my work.
+-->
+
+<LanguageData>
+	<MPT_MechaniteWeaponTraitResist>{0} has the trait {1} and has defied the use of the Mechanite Effector!</MPT_MechaniteWeaponTraitResist>
+	<MPT_MechaniteTraitIncompatOne>{0} has the trait {1} which is incompatible with {2}. Skipping...</MPT_MechaniteTraitIncompatOne>
+	<MPT_MechaniteTraitIncompatTwo>{0} has the trait {1} which is incompatible with {2}. Failure...</MPT_MechaniteTraitIncompatTwo>
+	<MPT_MechaniteOnHitDesc>Upon landing a hit, the persona weapon has a {0} chance to {1} {2}{3}~{4}.{5}</MPT_MechaniteOnHitDesc>
+	<MPT_MechaniteWeaponTraitDevoured>Traits consumed: {0}. </MPT_MechaniteWeaponTraitDevoured>
+	<MPT_MechaniteInfestationExists>{0} is already swarming with mechanites you monster!</MPT_MechaniteInfestationExists>
+	<MPT_MechaniteWeaponTraitMissing>No mechanites to purge on {0}!</MPT_MechaniteWeaponTraitMissing>
+	<MPT_ExtraSpawnDesc>Spawns {0} additional Burster(s) upon target's death.</MPT_ExtraSpawnDesc>
+	<MPT_MechaniteWeaponTraitFail>{0} already has both {1} and {2}.</MPT_MechaniteWeaponTraitFail>
+	<MPT_ApplyMechaniteDesc>apply/increase the severity of the {0} to</MPT_ApplyMechaniteDesc>
+	<MPT_MinSeverityDesc> by {0}</MPT_MinSeverityDesc>
+	<MPT_MaxSeverityDesc>{0}</MPT_MaxSeverityDesc>
+	<MPT_HediffDef>Mechanite plague</MPT_HediffDef>
+	
+	<MPT_SettingRestart>SETTINGS REQUIRE RESTART TO TAKE EFFECT!</MPT_SettingRestart>
+	<MPT_SettingNoticeTop>Hover over labels for additional information.</MPT_SettingNoticeTop>
+	<MPT_SettingNoticeTopTooltip>Hey look! A Tooltip!</MPT_SettingNoticeTopTooltip>
+	
+	<MPT_SettingThresholdLabel>Mechanite Capacity Thresholds</MPT_SettingThresholdLabel>
+	<MPT_SettingThresholdLabelTooltip>Settings below determine how Mechanite Capacity works once certain thresholds are reached.</MPT_SettingThresholdLabelTooltip>
+	
+	<MPT_SettingThresholdHighest>Mechanite Capacity (Bursting): {0} Fall per Day.</MPT_SettingThresholdHighest>
+	<MPT_SettingThresholdHighestTooltip>Highest limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdHighestTooltip>
+	
+	<MPT_SettingThresholdHigh>Mechanite Capacity (Overflowing): {0} Fall per Day.</MPT_SettingThresholdHigh>
+	<MPT_SettingThresholdHighTooltip>High limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdHighTooltip>
+	
+	<MPT_SettingThresholdMedium>Mechanite Capacity (Swelling): {0} Fall per Day.</MPT_SettingThresholdMedium>
+	<MPT_SettingThresholdMediumTooltip>Medium limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdMediumTooltip>
+	
+	<MPT_SettingThresholdLow>Mechanite Capacity (Normal): {0} Fall per Day.</MPT_SettingThresholdLow>
+	<MPT_SettingThresholdLowTooltip>Low limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdLowTooltip>
+	
+	<!-- Not implemented due to trait scope. No reason for Plaguelust to fall at all at these stages. However it's here if I feel like adding it.
+	<MPT_SettingThresholdLower>Mechanite Capacity (Diminished): {0} Fall per Day.</MPT_SettingThresholdLower>
+	<MPT_SettingThresholdLowerTooltip>Lower limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdLowerTooltip>
+
+	<MPT_SettingThresholdLowest>Mechanite Capacity (Depleted): {0} Fall per Day.</MPT_SettingThresholdLowest>
+	<MPT_SettingThresholdLowestTooltip>Lowest limit of Mechanite Capacity (Severity >= {0}). How fast should Plaguelust fall per day once this threshold is reached?</MPT_SettingThresholdLowestTooltip>
+	-->
+
+	<MPT_SettingRecoveryLabel>Recovery Settings</MPT_SettingRecoveryLabel>
+	<MPT_SettingRecoveryLabelTooltip>Settings below determine the recovery rates for the trait, Mechanite Infester.</MPT_SettingRecoveryLabelTooltip>
+	
+	<MPT_SettingRecoveryCapacity>Mechanite Capacity recovery: -{0} severity</MPT_SettingRecoveryCapacity>
+	<MPT_SettingRecoveryCapacityTooltip>After successfully infecting a target with the Mechanite Plague, Mechanite Capacity severity is reduced.\n\nThis number determines how much Mechanite Capacity will be reduced by.</MPT_SettingRecoveryCapacityTooltip>
+	
+	<MPT_SettingRecoveryPlaguelust>Plaguelust recovery: {0}</MPT_SettingRecoveryPlaguelust>
+	<MPT_SettingRecoveryPlaguelustTooltip>After successfully infecting a target with the Mechanite Plague, Plaguelust need is increased. This satisfies the urges for pawns bonded to a persona weapon with Mechanite Infester.\n\nThis number determines how much Plaguelust will be increased by.</MPT_SettingRecoveryPlaguelustTooltip>
+	
+	<MPT_SettingReset>Reset settings</MPT_SettingReset>
+	<MPT_SettingResetTooltip>All settings will revert to default values</MPT_SettingResetTooltip>
+	<MPT_SettingCatagory>Mechanite Persona Traits</MPT_SettingCatagory>
+	
+	<!-- To be deleted after a few updates or if enough time has passed -->
+	<MPT_SettingNoticeBottom>Trait spawn settings are now handled by More Persona Traits - Trait Spawn mod settings!</MPT_SettingNoticeBottom>
+	<MPT_SettingNoticeBottomTooltip>THIS WILL NOT REMOVE THE TRAIT FROM THE GAME. ONLY PREVENT THEM FROM BEING ROLLED.\n\nIn the time I was gone, Arquebus made a whole thing for it. So just use that instead please!</MPT_SettingNoticeBottomTooltip>
+	
+	<MPT_SettingNoticeInfester>Mechanite Infester requires humanlike targets to purge mechanites! - Hover for more info!</MPT_SettingNoticeInfester>
+	<MPT_SettingNoticeHelper>The Mechanite Plague</MPT_SettingNoticeHelper>
+	<MPT_SettingNoticeInfesterTooltip>Mechanite Purge is needed for Plaguelust recovery and Mechanite recovery to take effect when using the Mechanite Infester persona trait.\n\nThis behavior can be altered inside {0} mod settings by changing allowed spawns for insects and animals.\n\nDoing so will make Mechanite Infester work normally even against non-humanlike pawns. However, settings may still need a restart to take effect.</MPT_SettingNoticeInfesterTooltip>
+</LanguageData>
