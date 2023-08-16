@@ -111,7 +111,10 @@ namespace MechanitePersonaTraits.WorkerClasses.Item
             if (!existingTraits.Contains(mechaniteTraits[0]))
             {
                 existingTraits.Add(mechaniteTraits[0]);
-                Messages.Message("MPT_MechaniteWeaponTraitDevoured".Translate(destroyedTraitsCount) + traitsDevouredResult, target, MessageTypeDefOf.NegativeEvent, true);
+                if (destroyedTraitsCount != 0)
+                {
+                    Messages.Message("MPT_MechaniteWeaponTraitDevoured".Translate(destroyedTraitsCount) + traitsDevouredResult, target, MessageTypeDefOf.NegativeEvent, true);
+                }
                 Messages.Message("MPT_WeaponTraitGained".Translate(target.LabelShort, mechaniteTraits[0].LabelCap), target, MessageTypeDefOf.NegativeEvent);
             }
 
