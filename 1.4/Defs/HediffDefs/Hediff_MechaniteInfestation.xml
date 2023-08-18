@@ -22,7 +22,7 @@ MPT_Hediff_MechaniteInfestation: I just wanted the damage caused by MPT_Mechanit
 				<labelSolidTendedWell>set</labelSolidTendedWell>
 			</li>
 			<li Class="HediffCompProperties_Infecter">
-				<infectionChance>0.30</infectionChance>
+				<infectionChance>0.25</infectionChance>
 			</li>
 			<li Class="HediffCompProperties_GetsPermanent">
 				<permanentLabel>metallic scar</permanentLabel>
