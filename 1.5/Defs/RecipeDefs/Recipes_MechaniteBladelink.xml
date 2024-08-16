@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+A RecipeDef for new crafting for new items.
+At the moment, I hope it does the following:
+- Crafting recipes for all the "Special" variant persona Effectors. Each uses a persona effector which without other mods is uncraftable
+so you gotta really want these traits.
+
+New Additions:
+MPT_MechaniteBladelinkExalt, MPT_MechaniteBladelinkCorruption, MPT_MechaniteBladelinkAnnul:
+All recipes for each of the effectors listed above.
+-->
+<Defs>
+	<RecipeDef>
+		<defName>MPT_CreateMechaExalt</defName>
+		<label>carefully insert mechanites</label>
+		<description>Through a long and tedious process, carefully insert mechanites made to spread the mechanite plague into a persona extension effector. The tampered persona effector will produce a psychic surge using the mechanites to "coax" the persona into taking an interest in them thus adding a random Mechanite trait. However, what direction that interest takes is entirely up to the persona.\n\nCan only be used on persona weapons that has a valid mechanite trait to add and that is under the absolute maximum number of traits (defined in the settings).</description>
+		<jobString>Carefully insert mechanites into a persona extension effector.</jobString>
+		<descriptionHyperlinks>
+			<ThingDef>MPT_BladelinkExalt</ThingDef>
+			<ThingDef>MP_MechaniteCanister</ThingDef>
+			<ThingDef>MPT_MechaniteBladelinkExalt</ThingDef>
+		</descriptionHyperlinks>
+		<workAmount>1000</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>ButcherMechanoid</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<researchPrerequisite>MP_MechaniteMedicine</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MPT_BladelinkExalt</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MP_MechaniteCanister</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MPT_BladelinkExalt</li>
+				<li>MP_MechaniteCanister</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<MPT_MechaniteBladelinkExalt>1</MPT_MechaniteBladelinkExalt>
+		</products>
+		<skillRequirements>
+			<Crafting>3</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<recipeUsers>
+			<li>FabricationBench</li>
+			<li>TableMachining</li>
+		</recipeUsers>
+    </RecipeDef>
+	
+	<RecipeDef>
+		<defName>MPT_CreateMechaCorrupt</defName>
+		<label>recklessly 'insert' mechanites</label>
+		<description>Recklessly dump the persona effector straight into canister of mechanites. The resulting psychic surge from this irreparably corrupted persona effector will absolutely dominate the persona and might even destroy existing personality traits. Truly no sane person could perform such an action knowing what will happen as a result if this persona effector is used.\n\nShould never used on a persona but if it is, a new 'positive' trait WILL be added, any existing trait that would be incompatible will be devoured by the mechanite psychic surge. So long as the persona is under the absolute maximum number of traits (defined in the settings) that is...</description>
+		<jobString>Recklessly 'insert' mechanites into a persona extension effector.</jobString>
+		<descriptionHyperlinks>
+			<ThingDef>MPT_BladelinkExalt</ThingDef>
+			<ThingDef>MP_MechaniteCanister</ThingDef>
+			<ThingDef>MPT_MechaniteBladelinkCorruption</ThingDef>
+		</descriptionHyperlinks>
+		<workAmount>20</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>ButcherMechanoid</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<addsHediff>MP_MechanitePlague</addsHediff>
+		<targetsBodyPart>false</targetsBodyPart>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MPT_BladelinkExalt</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MP_MechaniteCanister</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MPT_BladelinkExalt</li>
+				<li>MP_MechaniteCanister</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<MPT_MechaniteBladelinkCorruption>1</MPT_MechaniteBladelinkCorruption>
+		</products>
+		<recipeUsers>
+			<li>FabricationBench</li>
+			<li>TableMachining</li>
+			<li>CraftingSpot</li>
+		</recipeUsers>
+    </RecipeDef>
+	
+	<RecipeDef>
+		<defName>MPT_CreateMechaAnnul</defName>
+		<label>insert guardian mechanites</label>
+		<description>Insert guardian mechanites made to prevent the spread of the mechanite plague into a persona reduction effector. The preventative power of the guardian mechanite plus a psychic surge will be enough to purge any existing Mechanite trait from a persona, whether they like it or not.</description>
+		<jobString>Insert guardian mechanites into a persona reduction effector.</jobString>
+		<descriptionHyperlinks>
+			<ThingDef>MPT_BladelinkExalt</ThingDef>
+			<ThingDef>MP_MechaniteCanister</ThingDef>
+			<ThingDef>MPT_MechaniteBladelinkAnnul</ThingDef>
+		</descriptionHyperlinks>
+		<workAmount>600</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>ButcherMechanoid</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<researchPrerequisite>MP_MechaniteMedicine</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MPT_BladelinkAnnul</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MP_GuardianMechanites</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MPT_BladelinkAnnul</li>
+				<li>MP_GuardianMechanites</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<MPT_MechaniteBladelinkAnnul>1</MPT_MechaniteBladelinkAnnul>
+		</products>
+		<skillRequirements>
+			<Crafting>5</Crafting>
+			<Intellectual>5</Intellectual>
+		</skillRequirements>
+		<recipeUsers>
+			<li>FabricationBench</li>
+			<li>TableMachining</li>
+		</recipeUsers>
+    </RecipeDef>
+</Defs>

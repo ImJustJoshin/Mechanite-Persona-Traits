@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+A ThingDef for new items.
+At the moment, I hope it does the following:
+- Add special item variants of Persona Effectors.
+- Crafting recipes for all of them. Each uses a persona effector which without other mods is uncraftable
+so you gotta really want these traits.
+
+New Additions:
+MPT_MechaniteBladelinkExalt: Variant of Persona Extension Effector. Adds a random standard Mechanite Persona Trait. No Mechanite Infester.
+MPT_MechaniteBladelinkCorruption: Variant of Persona Extension Effector. Adds the Mechanite Infester trait. Why would you do this?
+MPT_MechaniteBladelinkAnnul: Variant of Persona Reduction Effector. Purges all Mechanites from a persona.
+-->
+
+<Defs>
+    <ThingDef ParentName="PersonaEffectorBase">
+        <defName>MPT_MechaniteBladelinkExalt</defName>
+        <label>Persona Mechanite Effector</label>
+        <description>A one-use psychic persona effector. This persona effector has been tampered with using mechanite canisters and is now experiencing erratic behavior.\n\nUnless prevented, use of this Effector will result in mechanites infesting the targeted persona. Can only be used on persona weapons that has a valid mechanite trait to add and that is under the absolute maximum number of traits (defined in the settings).</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/bladelink_MechaExalt</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>1500</MarketValue>
+        </statBases>
+        <comps>
+            <li Class="MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompProperties_TargetableSingleBladelink">
+                <compClass>MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompTargetable_SingleBladelinkTraitAddable</compClass>
+            </li>
+            <li>
+                <compClass>MechanitePersonaTraits.WorkerClasses.Item.CompTargetEffect_BladelinkMechaExalt</compClass>
+            </li>
+        </comps>
+    </ThingDef>
+	
+	<ThingDef ParentName="PersonaEffectorBase">
+        <defName>MPT_MechaniteBladelinkCorruption</defName>
+        <label>Persona Mechanite Gestation Effector</label>
+        <description>A one-use psychic persona effector. This persona effector has been corrupted and is now infested with mechanites. Recommended action: Destroy this effector as soon as possible. Lest you reap what you sow...\n\nShould never used on any persona weapon but will only apply if the persona isn't already infested with mechanites and that its under the absolute maximum number of traits (defined in the settings).</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/bladelink_MechaCorrupt</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>1500</MarketValue>
+        </statBases>
+        <comps>
+            <li Class="MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompProperties_TargetableSingleBladelink">
+                <compClass>MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompTargetable_SingleBladelinkTraitAddable</compClass>
+            </li>
+            <li>
+                <compClass>MechanitePersonaTraits.WorkerClasses.Item.CompTargetEffect_BladelinkMechaCorruption</compClass>
+            </li>
+        </comps>
+    </ThingDef>
+	
+    <ThingDef ParentName="PersonaEffectorBase">
+        <defName>MPT_MechaniteBladelinkAnnul</defName>
+        <label>Persona Guardian Effector</label>
+        <description>A one-use psychic persona effector. The use of a reduction effector combined with guardian mechanites will purge any and all traces of the mechanite plague corrupting the persona's personality.\n\In the event that this purge leaves the persona no traits, the effector will default to standard settings and the persona will be reformatted instead.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/bladelink_MechaAnnul</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>700</MarketValue>
+        </statBases>
+        <comps>
+            <li Class="MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompProperties_TargetableSingleBladelink">
+                <compClass>MorePersonaTraits.WorkerClasses.ItemWorkerClasses.CompTargetable_SingleBladelink</compClass>
+            </li>
+            <li>
+                <compClass>MechanitePersonaTraits.WorkerClasses.Item.CompTargetEffect_BladelinkMechaAnnul</compClass>
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>
