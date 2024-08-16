@@ -75,12 +75,67 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RecipeDefs", "RecipeDefs", 
 		..\..\1.4\Defs\RecipeDefs\Recipes_MechaniteBladelink.xml = ..\..\1.4\Defs\RecipeDefs\Recipes_MechaniteBladelink.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.5", "1.5", "{0AA1BD75-333C-4B8A-A830-1A787E35F151}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{CCB26917-6D53-401B-A22D-A88A56F13FA0}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Assemblies\MechanitePersonaTraits.dll = ..\..\1.5\Assemblies\MechanitePersonaTraits.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Defs", "Defs", "{AA325887-9FC4-4BC9-99FB-8DDA98342E08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Patches", "Patches", "{AB909EF6-7CBD-46EC-9470-266189087B40}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Patches\MechanitePersonaPatch.xml = ..\..\1.5\Patches\MechanitePersonaPatch.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamageDefs", "DamageDefs", "{A1612721-52C4-4AAD-BA63-A1CED8394BE7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\DamageDefs\DamageDef.xml = ..\..\1.5\Defs\DamageDefs\DamageDef.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HediffDefs", "HediffDefs", "{65588AD4-8AEE-4E74-878C-3A51796B43E7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\HediffDefs\Hediff_MechaniteInfestation.xml = ..\..\1.5\Defs\HediffDefs\Hediff_MechaniteInfestation.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NeedDefs", "NeedDefs", "{CCDF040A-327E-44B6-822D-6EDBA9B2C5FB}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\NeedDefs\MechaniteNeeds.xml = ..\..\1.5\Defs\NeedDefs\MechaniteNeeds.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RecipeDefs", "RecipeDefs", "{C8B83905-4D0A-4329-A264-2FD6059C3D24}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\RecipeDefs\Recipes_MechaniteBladelink.xml = ..\..\1.5\Defs\RecipeDefs\Recipes_MechaniteBladelink.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThingDefs_Item", "ThingDefs_Item", "{45BCC69A-1B69-4E85-9888-CA8B4E3ECC20}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\ThingDefs_Item\MPT_Bladelink_MechaniteItems.xml = ..\..\1.5\Defs\ThingDefs_Item\MPT_Bladelink_MechaniteItems.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThoughtDefs", "ThoughtDefs", "{D4BA4142-8BB4-43B2-92BB-CBB0F90594D3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\ThoughtDefs\Thoughts_Plaguelust.xml = ..\..\1.5\Defs\ThoughtDefs\Thoughts_Plaguelust.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeaponTraitDefs", "WeaponTraitDefs", "{FEAC7302-7C54-4AE1-A494-570C6CF2FEA9}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\1.5\Defs\WeaponTraitDefs\MechaniteWeaponTraitDefs.xml = ..\..\1.5\Defs\WeaponTraitDefs\MechaniteWeaponTraitDefs.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		1.4|Any CPU = 1.4|Any CPU
+		1.5|Any CPU = 1.5|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46107F89-1A93-4085-A482-F99BB968EED0}.1.4|Any CPU.ActiveCfg = 1.4|Any CPU
+		{46107F89-1A93-4085-A482-F99BB968EED0}.1.4|Any CPU.Build.0 = 1.4|Any CPU
+		{46107F89-1A93-4085-A482-F99BB968EED0}.1.5|Any CPU.ActiveCfg = 1.5|Any CPU
+		{46107F89-1A93-4085-A482-F99BB968EED0}.1.5|Any CPU.Build.0 = 1.5|Any CPU
 		{46107F89-1A93-4085-A482-F99BB968EED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46107F89-1A93-4085-A482-F99BB968EED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46107F89-1A93-4085-A482-F99BB968EED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -104,6 +159,16 @@ Global
 		{53F20ED6-C314-4606-B618-184032B1C992} = {0B2297C9-18DB-4D4C-BC49-8DD6ADE922DA}
 		{EBA5DDF7-3F66-4813-9B0C-BCC406D9E54C} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
 		{9BC828A6-7747-4D1B-B796-FEC2B4933DB3} = {32D7A6E8-90F3-4C3C-96D3-430E222A9B59}
+		{CCB26917-6D53-401B-A22D-A88A56F13FA0} = {0AA1BD75-333C-4B8A-A830-1A787E35F151}
+		{AA325887-9FC4-4BC9-99FB-8DDA98342E08} = {0AA1BD75-333C-4B8A-A830-1A787E35F151}
+		{AB909EF6-7CBD-46EC-9470-266189087B40} = {0AA1BD75-333C-4B8A-A830-1A787E35F151}
+		{A1612721-52C4-4AAD-BA63-A1CED8394BE7} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{65588AD4-8AEE-4E74-878C-3A51796B43E7} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{CCDF040A-327E-44B6-822D-6EDBA9B2C5FB} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{C8B83905-4D0A-4329-A264-2FD6059C3D24} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{45BCC69A-1B69-4E85-9888-CA8B4E3ECC20} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{D4BA4142-8BB4-43B2-92BB-CBB0F90594D3} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
+		{FEAC7302-7C54-4AE1-A494-570C6CF2FEA9} = {AA325887-9FC4-4BC9-99FB-8DDA98342E08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ABB0903-25CF-4392-B02A-412441309701}
